@@ -3,7 +3,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-const AuthLayout = ({ children, title, subtitle, imageSrc, switchText, switchLink, switchLinkText }) => {
+const AuthLayout = ({ children, title, subtitle, switchText, switchLink, switchLinkText }) => {
     return (
         <div className="flex min-h-screen font-sans">
             {/* Left Side - Blue Gradient and Info */}
