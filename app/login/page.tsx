@@ -4,8 +4,8 @@ import AuthLayout from "@/components/AuthLayout";
 export default function Login() {
     return (
         <AuthLayout
-            title="Login to Account"
-            subtitle="Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt."
+            title="Welcome Back"
+            subtitle="Login to manage your ad campaigns and track performance."
             switchText="Don't have an account?"
             switchLink="/signup"
             switchLinkText="Create Account"
@@ -15,8 +15,8 @@ export default function Login() {
                     <label className="absolute -top-3 left-4 bg-white px-1 text-xs text-gray-400 z-10">Email Address</label>
                     <input
                         type="email"
-                        placeholder="example@gmail.com"
-                        className="w-full px-4 py-3 border border-gray-200 rounded-2xl focus:outline-none focus:border-[#FF8A42] transition"
+                        placeholder="you@company.com"
+                        className="w-full px-4 py-3 border border-gray-200 bg-white rounded-2xl focus:outline-none focus:border-[#FF8A42] transition"
                     />
                 </div>
 
@@ -25,7 +25,7 @@ export default function Login() {
                     <input
                         type="password"
                         placeholder="********"
-                        className="w-full px-4 py-3 border border-gray-200 rounded-2xl focus:outline-none focus:border-[#FF8A42] transition"
+                        className="w-full px-4 py-3 border border-gray-200 bg-white rounded-2xl focus:outline-none focus:border-[#FF8A42] transition"
                     />
                 </div>
 
@@ -40,7 +40,7 @@ export default function Login() {
                     type="submit"
                     className="w-full py-4 bg-[#FF8A42] text-white rounded-2xl font-bold shadow-lg shadow-orange-200 hover:bg-[#e67a3a] transition-all"
                 >
-                    Login Account
+                    Log In
                 </button>
             </form>
         </AuthLayout>

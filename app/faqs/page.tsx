@@ -5,47 +5,52 @@ import { HelpCircle, Send } from "lucide-react";
 const FAQPage = () => {
     const faqs = [
         {
-            question: "How long I can use free trail?",
-            answer: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum."
+            question: "How does the free trial work?",
+            answer: "You can try Brand Lift risk-free for 14 days. You'll have access to all features on the Growth plan to see how it works for your business."
         },
         {
-            question: "Can I use all premium features in trail?",
-            answer: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour."
+            question: "Can I cancel my subscription anytime?",
+            answer: "Yes, absolutely. There are no lock-in contracts. You can cancel or upgrade your plan at any time from your dashboard."
         },
         {
-            question: "What is the process of upgrate plan?",
-            answer: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour."
+            question: "Do you support multiple locations?",
+            answer: "Yes! Our Pro plan is designed specifically for businesses with multiple locations or franchises, allowing you to manage everything from one login."
         },
         {
-            question: "Can I pay using Paypal account?",
-            answer: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum."
+            question: "How do I pay for my ads?",
+            answer: "We accept all major credit cards and PayPal. You set your own daily ad budget, so you never spend more than you intend."
         },
         {
-            question: "How can I change my shipping address?",
-            answer: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text."
+            question: "Do I need design skills?",
+            answer: "Not at all. Our platform comes with professional, ready-to-use templates. Just add your text and images, and you're good to go."
         },
         {
-            question: "What is the process of upgrate plan?",
-            answer: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum."
+            question: "Is there a setup fee?",
+            answer: "No, there are no setup fees. You only pay your monthly subscription and your ad budget, which goes directly to the ad networks."
         }
     ];
 
     return (
         <div className="bg-white">
             {/* Section 1: Hero Section */}
-            <section className="bg-[#4c1d95] pt-32 pb-44 text-center px-6 relative overflow-hidden text-white">
+            {/* Section 1: Hero Section */}
+            <section className="relative bg-gradient-to-br from-[#2e1065] via-[#4c1d95] to-[#7c3aed] pt-32 pb-44 text-center px-6 overflow-hidden text-white">
+                <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] bg-white/5 rounded-full blur-3xl"></div>
+                <div className="absolute bottom-[20%] right-[-10%] w-[500px] h-[500px] bg-[#fb923c]/10 rounded-full blur-3xl"></div>
+
                 <div className="max-w-4xl mx-auto relative z-10">
                     <h1 className="text-5xl md:text-6xl font-bold leading-tight">
                         Frequently Asked Questions
                     </h1>
                     <p className="mt-6 text-white/80 text-lg max-w-2xl mx-auto leading-relaxed">
-                        Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum
-                        has been the industry's standard dummy text ever since.
+                        Find answers to the most common questions about our platform, billing, and services.
                     </p>
                 </div>
-                {/* Decorative slant bottom */}
-                <div className="absolute bottom-0 left-0 w-full h-[80px] bg-white"
-                    style={{ clipPath: "polygon(0 100%, 100% 100%, 100% 0)" }}>
+                {/* Smooth Professional Wave Divider */}
+                <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0]">
+                    <svg className="relative block w-full h-[60px] md:h-[100px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                        <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" fill="#ffffff" className="fill-white"></path>
+                    </svg>
                 </div>
             </section>
 
@@ -54,8 +59,7 @@ const FAQPage = () => {
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Most Asked Questions</h2>
                     <p className="text-gray-500 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
-                        Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum has
-                        been the industry's standard dummy text ever since.
+                        Here are some of the most frequent inquiries we receive from our customers.
                     </p>
                 </div>
 
@@ -84,8 +88,7 @@ const FAQPage = () => {
                     <div className="text-center mb-16">
                         <h2 className="text-4xl font-bold text-[#1f2937] mb-4">Ask Questions</h2>
                         <p className="text-gray-500 max-w-2xl mx-auto leading-relaxed">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                            been the industry's standard dummy text ever since
+                            Can't find the answer you're looking for? Submit your question below and we'll get back to you shortly.
                         </p>
                     </div>
 

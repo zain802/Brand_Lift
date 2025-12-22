@@ -5,29 +5,29 @@ import { Users, UserCheck, Star, MessageCircle } from "lucide-react";
 const stats = [
     {
         icon: <Users size={32} className="text-white" />,
-        value: "170k",
-        label: "Total Users",
+        value: "10k+",
+        label: "Businesses Empowered",
         color: "bg-[#4f8cff]", // Blue
         shadow: "shadow-blue-200",
     },
     {
         icon: <UserCheck size={32} className="text-white" />,
-        value: "40k",
-        label: "Regular Users",
+        value: "5M+",
+        label: "Ads Served",
         color: "bg-[#FF8A42]", // Orange
         shadow: "shadow-orange-200",
     },
     {
         icon: <Star size={32} className="text-white" />,
-        value: "4.9",
-        label: "User Rating",
+        value: "98%",
+        label: "Customer Satisfaction",
         color: "bg-[#8c52ff]", // Purple
         shadow: "shadow-purple-200",
     },
     {
         icon: <MessageCircle size={32} className="text-white" />,
-        value: "10k",
-        label: "Positive Feedback",
+        value: "24/7",
+        label: "Expert Support",
         color: "bg-[#42fda8]", // Green (approx from image)
         shadow: "shadow-green-200",
     },
@@ -50,11 +50,12 @@ const SuccessStatsSection = () => {
             <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
 
                 <h2 className="text-3xl md:text-4xl font-bold text-[#1A1A1A] dark:text-white mb-4 font-poppins">
-                    Success in Numbers
+                    Proven Results
                 </h2>
 
                 <p className="text-gray-500 dark:text-gray-400 max-w-2xl mx-auto mb-20 text-lg">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since
+                    Join thousands of local businesses that are growing with Brand Lift.
+                    Our platform delivers real reliability and performance you can trust.
                 </p>
 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-10">

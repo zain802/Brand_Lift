@@ -3,14 +3,16 @@ import React from "react";
 
 const HeroSection = () => {
     return (
-        <section className="relative bg-[#4c1d95] text-white overflow-hidden min-h-[600px] flex items-center">
+        <section className="relative bg-gradient-to-br from-[#2e1065] via-[#4c1d95] to-[#7c3aed] text-white overflow-hidden min-h-[700px] flex items-center">
             {/* Background Decorative Circles */}
-            <div className="absolute top-[-100px] left-[-100px] w-[400px] h-[400px] bg-white/5 rounded-full"></div>
-            <div className="absolute bottom-[-100px] left-[10%] w-[300px] h-[300px] bg-white/5 rounded-full"></div>
+            <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] bg-white/5 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-[10%] right-[-5%] w-[400px] h-[400px] bg-[#fb923c]/20 rounded-full blur-3xl"></div>
 
-            {/* Slanted White Background Part */}
-            <div className="absolute bottom-0 right-0 w-full h-[30%] bg-white"
-                style={{ clipPath: "polygon(100% 0, 100% 100%, 0 100%)" }}>
+            {/* Smooth Professional Wave Divider */}
+            <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0]">
+                <svg className="relative block w-full h-[80px] md:h-[120px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" fill="#ffffff" className="fill-white"></path>
+                </svg>
             </div>
 
             <div className="max-w-7xl mx-auto px-6 py-12 relative z-10 w-full">
@@ -19,19 +21,17 @@ const HeroSection = () => {
                     {/* Left Content */}
                     <div className="flex flex-col items-start">
                         <h1 className="text-4xl md:text-5xl lg:text-5xl font-bold leading-tight">
-                            Best Application for Monitor <br />
-                            Your Business
+                            Grow Your Business with <br />
+                            Smart, Hyper-Local Ads
                         </h1>
 
                         <p className="mt-8 text-white/80 text-lg max-w-xl">
-                            Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum
-                            has been the industry's standard dummy text ever since the 1500s, when an unknown
-                            printer took a galley of type.
+                            The easiest way for shops, service providers, and professionals to create, run, and track ads—no agency required.
                         </p>
 
                         <button className="mt-10 px-10 py-4 rounded-2xl bg-[#FF8A42] 
               text-white font-bold text-lg shadow-lg hover:bg-[#e67a3a] transition-all">
-                            Get Started
+                            Start Advertising
                         </button>
                     </div>
 

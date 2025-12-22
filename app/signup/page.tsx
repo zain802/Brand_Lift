@@ -4,28 +4,28 @@ import AuthLayout from "@/components/AuthLayout";
 export default function SignUp() {
     return (
         <AuthLayout
-            title="Create an Account"
-            subtitle="Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt."
+            title="Start Growing Today"
+            subtitle="Create your free account and launch your first local ad in minutes."
             switchText="Already have an account?"
             switchLink="/login"
-            switchLinkText="Login Account"
+            switchLinkText="Log In"
         >
             <form className="space-y-6">
                 <div className="relative">
-                    <label className="absolute -top-3 left-4 bg-white px-1 text-xs text-gray-400 z-10">Email Address</label>
+                    <label className="absolute -top-3 left-4 bg-white px-1 text-xs text-gray-400 z-10">Full Name</label>
                     <input
-                        type="email"
-                        placeholder="example@gmail.com"
-                        className="w-full px-4 py-3 border border-gray-200 rounded-2xl focus:outline-none focus:border-[#FF8A42] transition"
+                        type="text"
+                        placeholder="John Doe"
+                        className="w-full px-4 py-3 border border-gray-200 bg-white rounded-2xl focus:outline-none focus:border-[#FF8A42] transition"
                     />
                 </div>
 
                 <div className="relative">
                     <label className="absolute -top-3 left-4 bg-white px-1 text-xs text-gray-400 z-10">Email Address</label>
                     <input
-                        type="email"
-                        placeholder="example@gmail.com"
-                        className="w-full px-4 py-3 border border-gray-200 rounded-2xl focus:outline-none focus:border-[#FF8A42] transition"
+                        type="text"
+                        placeholder="you@company.com"
+                        className="w-full px-4 py-3 border border-gray-200 bg-white rounded-2xl focus:outline-none focus:border-[#FF8A42] transition"
                     />
                 </div>
 
@@ -34,7 +34,7 @@ export default function SignUp() {
                     <input
                         type="password"
                         placeholder="********"
-                        className="w-full px-4 py-3 border border-gray-200 rounded-2xl focus:outline-none focus:border-[#FF8A42] transition"
+                        className="w-full px-4 py-3 border border-gray-200 bg-white rounded-2xl focus:outline-none focus:border-[#FF8A42] transition"
                     />
                 </div>
 

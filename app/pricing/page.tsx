@@ -7,98 +7,100 @@ const PricingPage = () => {
 
     const plans = [
         {
-            name: "Basic",
-            monthlyPrice: "0.99",
-            yearlyPrice: "10.99",
+            name: "Starter",
+            monthlyPrice: "49.00",
+            yearlyPrice: "490.00",
             features: [
-                "5 GB Bandwidth",
-                "Finance Analysing",
-                "Daily 2 Reports",
-                "5 Team Members",
-                "24 hour support"
+                "1 Ad Campaign",
+                "Basic Analytics",
+                "Email Support",
+                "Standard Templates",
+                "Local Targeting"
             ]
         },
         {
-            name: "Standard",
-            monthlyPrice: "7.50",
-            yearlyPrice: "27.50",
+            name: "Growth",
+            monthlyPrice: "99.00",
+            yearlyPrice: "990.00",
             features: [
-                "15 GB Bandwidth",
-                "Finance Analysing",
-                "Daily 10 Reports",
-                "10 Team Members",
-                "24 hour support"
-            ]
-        },
-        {
-            name: "Professional",
-            monthlyPrice: "9.90",
-            yearlyPrice: "49.90",
-            features: [
-                "20 GB Bandwidth",
-                "Finance Analysing",
-                "Daily 15 Reports",
-                "12 Team Members",
-                "24 hour support"
+                "5 Ad Campaigns",
+                "Advanced Analytics",
+                "AI Optimization",
+                "Priority Support",
+                "Premium Templates"
             ],
             highlight: true
         },
         {
-            name: "Enterprise",
-            monthlyPrice: "19.99",
-            yearlyPrice: "79.99",
+            name: "Pro",
+            monthlyPrice: "199.00",
+            yearlyPrice: "1990.00",
             features: [
-                "50 GB Bandwidth",
-                "Finance Analysing",
-                "Daily 35 Reports",
-                "20 Team Members",
-                "24 hour support"
+                "Unlimited Campaigns",
+                "White-label Reporting",
+                "Dedicated Account Manager",
+                "API Access",
+                "Multi-Location Support"
+            ]
+        },
+        {
+            name: "Enterprise",
+            monthlyPrice: "Custom",
+            yearlyPrice: "Custom",
+            features: [
+                "Custom Solutions",
+                "Global Reach",
+                "Dedicated Infrastructure",
+                "24/7 SLA Support",
+                "Strategic Consulting"
             ]
         }
     ];
 
     const faqs = [
         {
-            question: "How long I can use free trail?",
-            answer: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum."
+            question: "How long is the free trial?",
+            answer: "You get 14 days of full access to the Pro plan features to test everything out."
         },
         {
-            question: "Can I use all premium features in trail?",
-            answer: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour."
+            question: "Can I use all premium features in trial?",
+            answer: "Yes, the trial includes all premium features so you can experience the full power of Brand Lift."
         },
         {
-            question: "What is the process of upgrate plan?",
-            answer: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour."
+            question: "What is the process of upgrade plan?",
+            answer: "Simply go to your billing settings and select a new plan. Your data carries over instantly."
         },
         {
             question: "Can I pay using Paypal account?",
-            answer: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum."
+            answer: "Yes, we accept PayPal and all major credit cards for your convenience."
         }
     ];
 
     return (
         <div className="bg-white">
             {/* Section 1: Hero Section */}
-            <section className="bg-[#7c3aed] pt-20 pb-40 text-center px-6 relative overflow-hidden">
+            <section className="relative bg-gradient-to-br from-[#2e1065] via-[#4c1d95] to-[#7c3aed] pt-20 pb-40 text-center px-6 overflow-hidden">
                 {/* Decorative circles */}
-                <div className="absolute top-[-100px] left-[-100px] w-[300px] h-[300px] bg-white/5 rounded-full"></div>
+                <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] bg-white/5 rounded-full blur-3xl"></div>
+                <div className="absolute bottom-[20%] right-[-10%] w-[500px] h-[500px] bg-[#fb923c]/10 rounded-full blur-3xl"></div>
 
                 <div className="max-w-4xl mx-auto relative z-10">
                     <h1 className="text-4xl md:text-5xl lg:text-5xl font-bold text-white leading-tight">
-                        Enjoy the Best Value To Your Business <br className="hidden md:block" /> for Monitoring Data
+                        Flexible Plans for <br className="hidden md:block" /> Every Stage of Growth
                     </h1>
                     <p className="mt-6 text-white/80 text-lg max-w-2xl mx-auto">
-                        Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum
-                        has been the industry's standard dummy text ever since.
+                        Start small and scale up as you grow. No hidden fees, cancel anytime.
                     </p>
                     <button className="mt-10 px-8 py-3.5 bg-[#FF8A42] text-white font-bold rounded-2xl shadow-xl hover:bg-[#e67a3a] transition-all">
-                        Need Custom Package?
+                        View Plans
                     </button>
                 </div>
 
-                {/* Slanted Bottom */}
-                <div className="absolute bottom-0 left-0 w-full h-[100px] bg-white"
-                    style={{ clipPath: "polygon(0 100%, 100% 100%, 100% 0)" }}>
+                {/* Smooth Professional Wave Divider */}
+                <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0]">
+                    <svg className="relative block w-full h-[60px] md:h-[100px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                        <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" fill="#ffffff" className="fill-white"></path>
+                    </svg>
                 </div>
             </section>
 
@@ -107,8 +109,7 @@ const PricingPage = () => {
                 <div className="text-center mb-16">
                     <h2 className="text-4xl font-bold text-gray-900">Our Pricing and Plans</h2>
                     <p className="mt-4 text-gray-500 max-w-2xl mx-auto leading-relaxed">
-                        Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum has
-                        been the industry's standard dummy text ever since.
+                        Transparent pricing with no hidden fees. Choose the package that best fits your business needs.
                     </p>
 
                     {/* Toggle Switch */}
@@ -169,8 +170,7 @@ const PricingPage = () => {
                     <div className="text-center mb-20">
                         <h2 className="text-4xl font-bold text-gray-900">Frequently Asked Questions</h2>
                         <p className="mt-4 text-gray-500 max-w-2xl mx-auto leading-relaxed">
-                            Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum has
-                            been the industry's standard dummy text ever since.
+                            Have questions? We're here to help. Check out the most common questions about our service below.
                         </p>
                     </div>
 

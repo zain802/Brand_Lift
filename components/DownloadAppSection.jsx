@@ -1,90 +1,91 @@
 "use client";
 import React from "react";
-import Image from "next/image";
-import { Apple, Play } from "lucide-react";
-
-const steps = [
-    {
-        number: "1",
-        title: "Signup Your Account in App",
-        description: "Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem has been the standard dummy text.",
-    },
-    {
-        number: "2",
-        title: "Input Your Personal Data",
-        description: "Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem has been the standard dummy text.",
-    },
-    {
-        number: "3",
-        title: "Get Daily Report and Update",
-        description: "Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem has been the standard dummy text.",
-    },
-];
+import { Smartphone, Zap, BarChart3, Bell, Shield, Users } from "lucide-react";
 
 const DownloadAppSection = () => {
+    const features = [
+        {
+            icon: <Smartphone className="w-6 h-6" />,
+            title: "Mobile First",
+            description: "Manage campaigns anywhere, anytime"
+        },
+        {
+            icon: <Zap className="w-6 h-6" />,
+            title: "Instant Updates",
+            description: "Real-time notifications on performance"
+        },
+        {
+            icon: <BarChart3 className="w-6 h-6" />,
+            title: "Live Analytics",
+            description: "Track metrics on the go"
+        },
+        {
+            icon: <Bell className="w-6 h-6" />,
+            title: "Smart Alerts",
+            description: "Never miss important insights"
+        },
+        {
+            icon: <Shield className="w-6 h-6" />,
+            title: "Secure Access",
+            description: "Enterprise-grade security"
+        },
+        {
+            icon: <Users className="w-6 h-6" />,
+            title: "Team Collaboration",
+            description: "Work together seamlessly"
+        }
+    ];
+
     return (
-        <section className="py-16 lg:py-24 bg-[#4a1fb8] text-white overflow-hidden relative">
-            <div className="max-w-7xl mx-auto px-6">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <section className="py-20 bg-gradient-to-br from-[#2e1065] via-[#4c1d95] to-[#7c3aed] text-white overflow-hidden relative">
+            {/* Decorative Elements */}
+            <div className="absolute top-0 right-0 w-96 h-96 bg-[#FF8A42]/10 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 left-0 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
 
-                    {/* Left Side - Content */}
-                    <div className="text-center lg:text-left order-2 lg:order-1">
-                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 lg:mb-12 font-poppins leading-tight">
-                            Ready to Use? Download Now
-                        </h2>
+            <div className="max-w-7xl mx-auto px-6 relative z-10">
 
-                        <div className="space-y-8 lg:space-y-10 mb-10 lg:mb-12">
-                            {steps.map((step, index) => (
-                                <div key={index} className="flex flex-col lg:flex-row items-center lg:items-start gap-4 lg:gap-6 group">
-                                    <div className="flex-shrink-0 w-12 h-12 lg:w-14 lg:h-14 rounded-full border-2 border-white/30 flex items-center justify-center text-xl font-medium transition-all duration-300 group-hover:bg-white group-hover:text-[#4a1fb8] group-hover:border-white shadow-lg">
-                                        {step.number}
-                                    </div>
-                                    <div>
-                                        <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
-                                        <p className="text-white/70 leading-relaxed text-sm md:text-base max-w-md mx-auto lg:mx-0">
-                                            {step.description}
-                                        </p>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-
-                        <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 lg:gap-6">
-                            <button className="flex items-center gap-3 px-8 py-4 border border-white rounded-full transition-all duration-300 group hover:bg-[#EA7D4E] hover:border-[#EA7D4E] hover:shadow-lg hover:-translate-y-1">
-                                <Apple size={32} className="group-hover:text-white transition-colors" />
-                                <div className="text-left">
-                                    <div className="text-[10px] uppercase tracking-wider opacity-80 group-hover:text-white">Download on the</div>
-                                    <div className="text-lg font-bold leading-none group-hover:text-white">App Store</div>
-                                </div>
-                            </button>
-
-                            <button className="flex items-center gap-3 px-8 py-4 border border-white rounded-full transition-all duration-300 group hover:bg-[#EA7D4E] hover:border-[#EA7D4E] hover:shadow-lg hover:-translate-y-1">
-                                <Play size={32} className="group-hover:text-white fill-current transition-colors" />
-                                <div className="text-left">
-                                    <div className="text-[10px] uppercase tracking-wider opacity-80 group-hover:text-white">Get it on</div>
-                                    <div className="text-lg font-bold leading-none group-hover:text-white">Play Store</div>
-                                </div>
-                            </button>
-                        </div>
-                    </div>
-
-                    {/* Right Side - Phone Image */}
-                    <div className="relative flex justify-center lg:justify-end order-1 lg:order-2 mb-10 lg:mb-0">
-                        {/* Placeholder for phone mockup */}
-                        <div className="relative z-10 w-[240px] md:w-[320px] lg:w-[350px] transform rotate-12 drop-shadow-2xl hover:rotate-6 transition-transform duration-500">
-                            <Image
-                                src="/images/jpg/phone-mockup.jpg"
-                                alt="App Interface"
-                                width={350}
-                                height={700}
-                                className="w-full h-auto rounded-[3rem] border-[8px] border-gray-800 shadow-2xl"
-                            />
-                        </div>
-                        {/* Glow effect */}
-                        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] lg:w-[400px] lg:h-[400px] bg-blue-500/30 rounded-full blur-[80px] -z-10 animate-pulse"></div>
-                    </div>
-
+                {/* Header */}
+                <div className="text-center mb-16">
+                    <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+                        Take Control of Your Campaigns
+                    </h2>
+                    <p className="text-white/80 text-lg max-w-2xl mx-auto leading-relaxed">
+                        Access powerful advertising tools from any device. Monitor performance, adjust budgets, and grow your business—all from the palm of your hand.
+                    </p>
                 </div>
+
+                {/* Features Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+                    {features.map((feature, index) => (
+                        <div
+                            key={index}
+                            className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:bg-white/15 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+                        >
+                            <div className="w-12 h-12 rounded-xl bg-[#FF8A42] flex items-center justify-center mb-4 text-white">
+                                {feature.icon}
+                            </div>
+                            <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+                            <p className="text-white/70 text-sm">{feature.description}</p>
+                        </div>
+                    ))}
+                </div>
+
+                {/* CTA Section */}
+                <div className="text-center">
+                    <p className="text-white/90 mb-6 text-lg font-medium">
+                        Get started today and experience the difference
+                    </p>
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                        <button className="flex items-center gap-3 px-8 py-4 bg-[#FF8A42] text-white rounded-full font-semibold shadow-lg hover:bg-[#e67a3a] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                            <Smartphone className="w-5 h-5" />
+                            Start Free Trial
+                        </button>
+                        <button className="flex items-center gap-3 px-8 py-4 border-2 border-white text-white rounded-full font-semibold hover:bg-white hover:text-[#7c3aed] transition-all duration-300 hover:-translate-y-1">
+                            Watch Demo
+                        </button>
+                    </div>
+                </div>
+
             </div>
         </section>
     );

@@ -26,10 +26,10 @@ const ContactSection = () => {
                     {/* Right Side - Form */}
                     <div className="w-full max-w-lg mx-auto lg:mx-0">
                         <h2 className="text-3xl md:text-4xl font-bold text-[#1A1A1A] dark:text-white mb-4 font-poppins">
-                            Get in Touch
+                            Ready to scale your business?
                         </h2>
                         <p className="text-gray-500 dark:text-gray-400 mb-10 text-sm md:text-base leading-relaxed">
-                            Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod on tempor incididunt ut labore et dolore magna aliqua.
+                            Get in touch with our team for a personalized demo or if you have any questions about getting started.
                         </p>
 
                         <form className="space-y-8">
@@ -104,7 +104,7 @@ const ContactSection = () => {
                                 </label>
 
                                 <button type="button" className="px-10 py-3.5 bg-[#FF8A42] hover:bg-[#ff7b29] text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                                    Send
+                                    Send Message
                                 </button>
                             </div>
 

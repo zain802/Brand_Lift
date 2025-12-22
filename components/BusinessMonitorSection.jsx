@@ -42,19 +42,19 @@ const BusinessMonitorSection = () => {
                     {/* Right Side - Content */}
                     <div className="lg:pl-10">
                         <h2 className="text-4xl md:text-5xl font-bold text-[#1A1A1A] dark:text-white leading-tight mb-6 font-poppins">
-                            Monitor Your Business Anytime, Anywhere in the World
+                            Real-Time Performance Tracking
                         </h2>
 
                         <p className="text-gray-500 dark:text-gray-400 text-lg mb-8 leading-relaxed">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas.
+                            Stop guessing. Know exactly how your ads are performing with our intuitive dashboard. Track impressions, clicks, and customer engagement as they happen.
                         </p>
 
                         <p className="text-gray-500 dark:text-gray-400 text-lg mb-10 leading-relaxed">
-                            ccumsanamet, consectetur adipiscing elit, sed do eiusmod tempor incid idunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices Letraset sheets containing gravida.
+                            Understand your ROI instantly and make data-driven decisions to optimize your budget and grow your business faster.
                         </p>
 
                         <button className="px-10 py-4 bg-[#FF8A42] hover:bg-[#ff7b29] text-white text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                            Get Started
+                            Track Your Success
                         </button>
                     </div>
 

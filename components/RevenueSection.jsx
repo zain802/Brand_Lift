@@ -11,19 +11,19 @@ const RevenueSection = () => {
                     {/* Left Side - Content */}
                     <div className="lg:pr-10 order-2 lg:order-1">
                         <h2 className="text-4xl md:text-5xl font-bold text-[#1A1A1A] dark:text-white leading-tight mb-6 font-poppins">
-                            Calculate Your Ads and Total Revenue Anytime
+                            Maximize Your ROI
                         </h2>
 
                         <p className="text-gray-500 dark:text-gray-400 text-lg mb-8 leading-relaxed">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas.
+                            Turn ad spend into real revenue. Our smart algorithms ensure every dollar works hard for your business by targeting the right audience at the right time.
                         </p>
 
                         <p className="text-gray-500 dark:text-gray-400 text-lg mb-10 leading-relaxed">
-                            ccumsanamet, consectetur adipiscing elit, sed do eiusmod tempor incid idunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices Letraset sheets containing gravida.
+                            Whether you are a local cafe or a growing agency, Brand Lift scales with you to maximize your profit margins and deliver clear, measurable results.
                         </p>
 
                         <button className="px-10 py-4 bg-[#FF8A42] hover:bg-[#ff7b29] text-white text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                            Get Started
+                            Start Growing
                         </button>
                     </div>
 

@@ -18,62 +18,71 @@ import {
 const ServicesPage = () => {
     const services = [
         {
-            title: "Realtime Data",
+            title: "Realtime Analytics",
             icon: <BarChart3 size={32} />,
-            desc: "Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum has been text.",
+            desc: "Track every click and impression as it happens. Understand your audience better with instant data updates.",
         },
         {
-            title: "Fully Cloud Access",
+            title: "Cloud-Based Platform",
             icon: <Cloud size={32} />,
-            desc: "Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum has been text.",
+            desc: "Access your dashboard from anywhere. Your campaigns are meaningful and always accessible on the secure cloud.",
         },
         {
-            title: "Full Customizable",
+            title: "Customizable Ads",
             icon: <Edit3 size={32} />,
-            desc: "Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum has been text.",
+            desc: "Use our professional templates or create your own custom designs to match your brand identity perfectly.",
         },
         {
-            title: "Smart Algorithm",
+            title: "AI Optimization",
             icon: <TrendingUp size={32} />,
-            desc: "Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum has been text.",
+            desc: "Our smart algorithms automatically adjust your bids and targeting to ensure maximum ROI for your budget.",
         },
         {
-            title: "Fully Secure System",
+            title: "Enterprise Security",
             icon: <ShieldCheck size={32} />,
-            desc: "Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum has been text.",
+            desc: "We use bank-level encryption to keep your data, payments, and customer information completely safe.",
         },
         {
-            title: "Regular Updates",
+            title: "24/7 Support",
             icon: <Clock size={32} />,
-            desc: "Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum has been text.",
+            desc: "Our dedicated support team is available around the clock to help you with any questions or issues.",
         }
     ];
 
     return (
         <div className="bg-white">
             {/* Section 1: Hero Section */}
-            <section className="bg-[#4c1d95] pt-32 pb-44 text-center px-6 relative overflow-hidden">
+            {/* Section 1: Hero Section */}
+            <section className="relative bg-gradient-to-br from-[#2e1065] via-[#4c1d95] to-[#7c3aed] pt-32 pb-44 text-center px-6 overflow-hidden">
+                <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] bg-white/5 rounded-full blur-3xl"></div>
+                <div className="absolute bottom-[20%] right-[-10%] w-[500px] h-[500px] bg-[#fb923c]/10 rounded-full blur-3xl"></div>
+
                 <div className="max-w-4xl mx-auto relative z-10">
                     <h1 className="text-5xl md:text-6xl font-bold text-white leading-tight">
-                        Service Page 01
+                        Comprehensive Advertising Solutions
                     </h1>
                     <p className="mt-6 text-white/80 text-lg max-w-2xl mx-auto">
-                        Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum
-                        has been the industry's standard dummy text ever since.
+                        From automated ad creation to real-time analytics, we provide the tools you need to succeed in the digital marketplace.
                     </p>
                     <button className="mt-10 px-10 py-4 bg-[#FF8A42] text-white font-bold rounded-2xl shadow-xl hover:bg-[#e67a3a] transition-all transform hover:-translate-y-1">
                         Get Started
                     </button>
+                </div>
+
+                {/* Smooth Professional Wave Divider */}
+                <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0]">
+                    <svg className="relative block w-full h-[60px] md:h-[100px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                        <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" fill="#ffffff" className="fill-white"></path>
+                    </svg>
                 </div>
             </section>
 
             {/* Section 2: Services Grid */}
             <section className="py-24 max-w-7xl mx-auto px-4 md:px-6 -mt-20 relative z-20">
                 <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Discover services we're provided</h2>
+                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Discover services we provide</h2>
                     <p className="mt-4 text-gray-500 max-w-2xl mx-auto text-sm md:text-base">
-                        Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum has
-                        been the industry's standard dummy text ever since.
+                        We offer a complete suite of digital advertising tools tailored for local business growth.
                     </p>
                 </div>
 
@@ -108,14 +117,10 @@ const ServicesPage = () => {
                             How Our Application Works
                         </h2>
                         <p className="mt-8 text-gray-500 text-lg leading-relaxed">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Quis ipsum
-                            suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan
-                            lacus vel facilisis.
+                            Our platform automates the complex parts of advertising. You define the goal, we handle the bidding, targeting, and optimization to deliver results.
                         </p>
                         <p className="mt-6 text-gray-500 text-lg leading-relaxed">
-                            Aenean euismod elementum nisi quis eleifend quam adipiscing vitae proin.
-                            Sed elementum tempus egestas sed sed risus.
+                            Stay in the loop with transparent reporting and real-time alerts on your campaign performance.
                         </p>
                         <button className="mt-10 px-10 py-4 bg-[#FF8A42] text-white font-bold rounded-2xl shadow-lg hover:bg-[#e67a3a] transition-all transform hover:scale-105">
                             Learn More

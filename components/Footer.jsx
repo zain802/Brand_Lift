@@ -5,7 +5,7 @@ import { Box, Facebook, Twitter, Instagram } from "lucide-react"; // Using Insta
 
 const Footer = () => {
     return (
-        <footer className="bg-[#5b2ccf] text-white pt-24 pb-10 rounded-tl-[100px] mt-24 relative overflow-hidden font-poppins">
+        <footer className="bg-gradient-to-br from-[#2e1065] via-[#4c1d95] to-[#7c3aed] text-white pt-24 pb-10 rounded-tl-[100px] mt-24 relative overflow-hidden font-poppins">
 
             {/* Background Graphic overlay (optional, for the 'curve' effect inside if needed, but main shape is rounded-tl) */}
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
@@ -19,60 +19,53 @@ const Footer = () => {
                     <div>
                         <div className="flex items-center gap-2 mb-6">
                             <Box size={32} className="text-white fill-white/20" />
-                            <span className="text-2xl font-bold">Cubart</span>
+                            <span className="text-2xl font-bold">Brand Lift</span>
                         </div>
                         <p className="text-white/70 leading-relaxed mb-8 text-sm">
-                            Lorem ipsum dolor sit amet conse ctetur adipiscing elit sed do eiusmod on tempor incididunt ut labore et dolore magna aliqua of the loksta.
+                            The smartest way for local businesses to advertise online. Simple, automated, and effective.
                         </p>
                         <div className="flex gap-4">
-                            <a href="#" className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-[#5b2ccf] transition-all">
+                            <a href="#" className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-[#FF8A42] hover:text-white hover:border-[#FF8A42] transition-all">
                                 <Facebook size={18} />
                             </a>
-                            <a href="#" className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-[#5b2ccf] transition-all">
+                            <a href="#" className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-[#FF8A42] hover:text-white hover:border-[#FF8A42] transition-all">
                                 <Twitter size={18} />
                             </a>
-                            <a href="#" className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-[#5b2ccf] transition-all">
+                            <a href="#" className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-[#FF8A42] hover:text-white hover:border-[#FF8A42] transition-all">
                                 <Instagram size={18} />
                             </a>
                         </div>
                     </div>
 
-                    {/* About Company */}
+                    {/* Company */}
                     <div>
-                        <h3 className="text-lg font-bold mb-8">About Company</h3>
+                        <h3 className="text-lg font-bold mb-8">Company</h3>
                         <ul className="space-y-4 text-sm text-white/80">
-                            <li><Link href="#" className="hover:text-white hover:underline transition-all">SaaSWeb Online</Link></li>
-                            <li><Link href="#" className="hover:text-white hover:underline transition-all">Our Leadership</Link></li>
-                            <li><Link href="#" className="hover:text-white hover:underline transition-all">Carrers</Link></li>
-                            <li><Link href="#" className="hover:text-white hover:underline transition-all">What We Do</Link></li>
-                            <li><Link href="#" className="hover:text-white hover:underline transition-all">Our Strategies</Link></li>
-                            <li><Link href="#" className="hover:text-white hover:underline transition-all">Product Tour</Link></li>
+                            <li><Link href="/about" className="hover:text-[#FF8A42] hover:underline transition-all">About Us</Link></li>
+                            <li><Link href="/services" className="hover:text-[#FF8A42] hover:underline transition-all">Services</Link></li>
+                            <li><Link href="/pricing" className="hover:text-[#FF8A42] hover:underline transition-all">Pricing</Link></li>
+                            <li><Link href="/contact" className="hover:text-[#FF8A42] hover:underline transition-all">Contact</Link></li>
                         </ul>
                     </div>
 
-                    {/* Our Services */}
+                    {/* Resources */}
                     <div>
-                        <h3 className="text-lg font-bold mb-8">Our Services</h3>
+                        <h3 className="text-lg font-bold mb-8">Resources</h3>
                         <ul className="space-y-4 text-sm text-white/80">
-                            <li><Link href="#" className="hover:text-white hover:underline transition-all">Sales Analytics</Link></li>
-                            <li><Link href="#" className="hover:text-white hover:underline transition-all">Digital Marketing</Link></li>
-                            <li><Link href="#" className="hover:text-white hover:underline transition-all">Financial Help</Link></li>
-                            <li><Link href="#" className="hover:text-white hover:underline transition-all">Helpdesk Analytics</Link></li>
-                            <li><Link href="#" className="hover:text-white hover:underline transition-all">Embedded Support</Link></li>
-                            <li><Link href="#" className="hover:text-white hover:underline transition-all">Reporting Software</Link></li>
+                            <li><Link href="/faqs" className="hover:text-[#FF8A42] hover:underline transition-all">FAQs</Link></li>
+                            <li><Link href="#" className="hover:text-[#FF8A42] hover:underline transition-all">Blog</Link></li>
+                            <li><Link href="#" className="hover:text-[#FF8A42] hover:underline transition-all">Support Center</Link></li>
+                            <li><Link href="#" className="hover:text-[#FF8A42] hover:underline transition-all">Success Stories</Link></li>
                         </ul>
                     </div>
 
-                    {/* Access Us */}
+                    {/* Legal */}
                     <div>
-                        <h3 className="text-lg font-bold mb-8">Access Us</h3>
+                        <h3 className="text-lg font-bold mb-8">Legal</h3>
                         <ul className="space-y-4 text-sm text-white/80">
-                            <li><Link href="#" className="hover:text-white hover:underline transition-all">About Us</Link></li>
-                            <li><Link href="#" className="hover:text-white hover:underline transition-all">Payment</Link></li>
-                            <li><Link href="#" className="hover:text-white hover:underline transition-all">Send Money</Link></li>
-                            <li><Link href="#" className="hover:text-white hover:underline transition-all">Receive Money</Link></li>
-                            <li><Link href="#" className="hover:text-white hover:underline transition-all">Fees</Link></li>
-                            <li><Link href="#" className="hover:text-white hover:underline transition-all">Services</Link></li>
+                            <li><Link href="/privacy" className="hover:text-[#FF8A42] hover:underline transition-all">Privacy Policy</Link></li>
+                            <li><Link href="/terms" className="hover:text-[#FF8A42] hover:underline transition-all">Terms of Service</Link></li>
+                            <li><Link href="/cookies" className="hover:text-[#FF8A42] hover:underline transition-all">Cookie Policy</Link></li>
                         </ul>
                     </div>
 
@@ -80,14 +73,8 @@ const Footer = () => {
 
                 {/* Bottom Bar */}
                 <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/60">
-                    <div className="flex gap-8 font-medium">
-                        <Link href="#" className="hover:text-white transition-colors">Terms and Conditions</Link>
-                        <Link href="#" className="hover:text-white transition-colors">Privacy & Policy</Link>
-                        <Link href="#" className="hover:text-white transition-colors">Legal</Link>
-                        <Link href="#" className="hover:text-white transition-colors">Notice</Link>
-                    </div>
-                    <div className="text-center md:text-right">
-                        Copyright © template_path 2019
+                    <div className="text-center md:text-left">
+                        Copyright © 2025 Brand Lift. All rights reserved.
                     </div>
                 </div>
             </div>

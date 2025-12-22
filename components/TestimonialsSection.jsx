@@ -12,31 +12,31 @@ import "swiper/css/pagination";
 const testimonials = [
     {
         id: 1,
-        name: "Tarisha Jahan",
-        role: "UI/UX Designer",
+        name: "Sarah Jenkins",
+        role: "Boutique Owner",
         image: "https://randomuser.me/api/portraits/women/44.jpg",
-        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elitsed eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elitsed.",
+        text: "My boutique's foot traffic increased by 40% in just two weeks of using AdGrow. It really works!",
     },
     {
         id: 2,
-        name: "Rakib AL Mahmud",
-        role: "UI/UX Designer",
+        name: "Mike Ross",
+        role: "Local Plumber",
         image: "https://randomuser.me/api/portraits/men/32.jpg",
-        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elitsed eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elitsed.",
+        text: "I never understood online ads until I used this platform. It's so simple and the results are real.",
     },
     {
         id: 3,
-        name: "Eusra Ahmed Rima",
-        role: "UI/UX Designer",
+        name: "Emily Chen",
+        role: "Graphic Designer",
         image: "https://randomuser.me/api/portraits/women/65.jpg",
-        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elitsed eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elitsed.",
+        text: "The AI targeting is a game changer. I'm reaching customers I didn't even know I had.",
     },
     {
         id: 4,
-        name: "John Doe",
-        role: "Product Designer",
+        name: "David Miller",
+        role: "Restaurant Owner",
         image: "https://randomuser.me/api/portraits/men/86.jpg",
-        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elitsed eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elitsed.",
+        text: "Best investment for my local restaurant. The ROI is better than any other platform I've tried.",
     },
 ];
 
@@ -48,10 +48,10 @@ const TestimonialsSection = () => {
                 {/* Header */}
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-4xl font-bold text-[#1A1A1A] dark:text-white mb-4 font-poppins">
-                        What User Say About Us
+                        Trusted by Local Businesses
                     </h2>
                     <p className="text-gray-500 dark:text-gray-400 max-w-2xl mx-auto text-sm md:text-base">
-                        Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since
+                        See what our happy customers are saying about their growth with Brand Lift.
                     </p>
                 </div>
 

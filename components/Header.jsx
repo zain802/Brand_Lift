@@ -13,16 +13,16 @@ const Header = () => {
     ];
 
     return (
-        <header className="sticky top-0 z-50 bg-[#4c1d95]">
+        <header className="sticky top-0 z-50 bg-gradient-to-br from-[#2e1065] via-[#4c1d95] to-[#7c3aed]">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-20">
 
                     {/* Logo */}
                     <Link href="/" className="flex items-center gap-2 text-white">
                         <div className="w-9 h-9 border-2 border-white rounded-lg flex items-center justify-center">
-                            <span className="text-xl font-bold">◻</span>
+                            <span className="text-xl font-bold">A</span>
                         </div>
-                        <span className="text-xl font-semibold">Cubart</span>
+                        <span className="text-xl font-semibold">Brand Lift</span>
                     </Link>
 
                     {/* Desktop Menu */}
@@ -37,7 +37,6 @@ const Header = () => {
                         >
                             <button className="text-white/90 hover:text-[#FF8A42] transition flex items-center gap-1">
                                 Pages
-                                <span className={`transition-transform duration-300 ${pagesOpen ? 'rotate-180' : ''}`}>▼</span>
                             </button>
 
                             {/* Dropdown Menu */}
@@ -56,7 +55,7 @@ const Header = () => {
                         </div>
 
                         <Link href="/about" className="text-white/90 hover:text-[#FF8A42] transition">About</Link>
-                        <a href="#" className="text-white/90 hover:text-[#FF8A42] transition">Blog</a>
+                        <Link href="/blog" className="text-white/90 hover:text-[#FF8A42] transition">Blog</Link>
                         <Link href="/contact" className="text-white/90 hover:text-[#FF8A42] transition">Contact</Link>
                     </nav>
 

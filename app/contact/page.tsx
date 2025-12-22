@@ -20,10 +20,9 @@ const ContactPage = () => {
 
                     {/* Left: Get in Touch Form */}
                     <div className="lg:col-span-7">
-                        <h2 className="text-4xl font-extrabold text-[#111827] mb-6">Get in Touch</h2>
+                        <h2 className="text-4xl font-extrabold text-[#111827] mb-6">Let's Scale Your Business</h2>
                         <p className="text-gray-500 mb-14 text-lg leading-relaxed max-w-2xl">
-                            Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod on
-                            tempor incididunt ut labore et dolore magna aliqua.
+                            Have questions about our platform or pricing? Fill out the form and our team will get back to you within 24 hours.
                         </p>
 
                         <form className="space-y-12">
@@ -95,18 +94,18 @@ const ContactPage = () => {
                                 <div>
                                     <h4 className="text-2xl font-bold text-gray-900 mb-4">Contact Detail</h4>
                                     <p className="text-gray-500 text-base leading-relaxed max-w-[280px]">
-                                        203, Envato Labs. Alis Steet Melbourne, Australia.
+                                        123 Innovation Drive, Tech City, CA 90210, USA.
                                     </p>
                                 </div>
 
                                 <div>
                                     <p className="text-gray-500 text-sm font-medium mb-1">Call us:</p>
-                                    <p className="text-gray-900 text-xl font-bold">+123 4567 8910</p>
+                                    <p className="text-gray-900 text-xl font-bold">+1 (555) 123-4567</p>
                                 </div>
 
                                 <div>
                                     <p className="text-gray-500 text-sm font-medium mb-1">Mail us:</p>
-                                    <p className="text-gray-900 text-xl font-bold">example@mail.com</p>
+                                    <p className="text-gray-900 text-xl font-bold">support@adgrow.com</p>
                                 </div>
                             </div>
 

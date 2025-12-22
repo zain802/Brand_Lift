@@ -14,15 +14,17 @@ const AboutPage = () => {
     return (
         <div className="bg-white">
             {/* Section 1: Hero Section */}
-            <section className="relative bg-[#7c3aed] pt-20 pb-40 overflow-hidden">
+            <section className="relative bg-gradient-to-br from-[#2e1065] via-[#4c1d95] to-[#7c3aed] pt-20 pb-40 overflow-hidden">
+                <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] bg-white/5 rounded-full blur-3xl"></div>
+
                 <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 items-center gap-12 relative z-10">
                     <div className="text-white">
                         <h1 className="text-5xl md:text-7xl font-bold leading-tight">
-                            Designed for Every <br /> Business
+                            Empowering Local <br /> Businesses
                         </h1>
                         <p className="mt-6 text-white/80 text-lg max-w-xl">
-                            Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum
-                            has been the industry's standard dummy text ever since the 1500s.
+                            We simplify digital advertising so you can focus on what you do best—running your business.
+                            No complex jargon, just results.
                         </p>
                         <button className="mt-10 px-8 py-3 border-2 border-white text-white font-semibold rounded-xl hover:bg-white hover:text-[#7c3aed] transition-all">
                             Learn More
@@ -46,10 +48,10 @@ const AboutPage = () => {
                     </div>
                 </div>
 
-                {/* Wave Shape Divider */}
-                <div className="absolute bottom-0 left-0 w-full leading-[0]">
-                    <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
-                        <path d="M0 120L1440 120L1440 0C1440 0 1100 120 720 120C340 120 0 0 0 0L0 120Z" fill="white" />
+                {/* Smooth Professional Wave Divider */}
+                <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0]">
+                    <svg className="relative block w-full h-[60px] md:h-[100px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                        <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" fill="#ffffff" className="fill-white"></path>
                     </svg>
                 </div>
             </section>
@@ -59,12 +61,10 @@ const AboutPage = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                     <div>
                         <h2 className="text-4xl font-bold text-[#1f2937] leading-tight">
-                            High Performance Software that Increase Your Overall Workflow
+                            Everything You Need to Scale Your Business
                         </h2>
                         <p className="mt-8 text-gray-500 text-lg leading-relaxed">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Quis ipsum
-                            suspendisse ultrices gravida. Risus commodo viverra maecenas.
+                            Brand Lift provides a comprehensive suite of tools designed to help you create, manage, and optimize your local advertising campaigns with ease.
                         </p>
                         <button className="mt-10 px-8 py-4 bg-[#FF8A42] text-white font-bold rounded-2xl shadow-lg hover:bg-[#e67a3a] transition-all">
                             Learn More
@@ -79,7 +79,7 @@ const AboutPage = () => {
                             </div>
                             <h4 className="text-xl font-bold text-gray-800">Quick Access</h4>
                             <p className="mt-3 text-gray-500 text-sm leading-relaxed">
-                                Lorem ipsum is simply dummy text of the printing and typesetting industry.
+                                Gain instant insights into your campaigns with our streamlined dashboard navigation.
                             </p>
                         </div>
                         {/* Feature 2 */}
@@ -89,7 +89,7 @@ const AboutPage = () => {
                             </div>
                             <h4 className="text-xl font-bold text-gray-800">Advance Management</h4>
                             <p className="mt-3 text-gray-500 text-sm leading-relaxed">
-                                Lorem ipsum is simply dummy text of the printing and typesetting industry.
+                                Control budgets, schedules, and audience targeting with granular precision.
                             </p>
                         </div>
                         {/* Feature 3 */}
@@ -99,7 +99,7 @@ const AboutPage = () => {
                             </div>
                             <h4 className="text-xl font-bold text-gray-800">Cloud Services</h4>
                             <p className="mt-3 text-gray-500 text-sm leading-relaxed">
-                                Lorem ipsum is simply dummy text of the printing and typesetting industry.
+                                Securely store your creative assets and campaign data on our reliable cloud infrastructure.
                             </p>
                         </div>
                         {/* Feature 4 */}
@@ -109,7 +109,7 @@ const AboutPage = () => {
                             </div>
                             <h4 className="text-xl font-bold text-gray-800">Data Analysis</h4>
                             <p className="mt-3 text-gray-500 text-sm leading-relaxed">
-                                Lorem ipsum is simply dummy text of the printing and typesetting industry.
+                                Visualize performance metrics to make informed decisions and maximize ROI.
                             </p>
                         </div>
                     </div>
@@ -124,8 +124,7 @@ const AboutPage = () => {
                             We Bring Everything in One <br /> Single Place
                         </h2>
                         <p className="mt-4 text-gray-500 max-w-2xl">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua.
+                            Seamlessly integrate your existing tools and workflows into one unified platform for maximum efficiency.
                         </p>
                     </div>
 
@@ -139,8 +138,7 @@ const AboutPage = () => {
                                 <div>
                                     <h4 className="text-xl font-bold text-gray-800">Connect with Your Business</h4>
                                     <p className="mt-2 text-gray-500 text-sm leading-relaxed max-w-md">
-                                        Lorem ipsum is simply dummy text of the printing and typesetting
-                                        industry. Lorem ipsum has been the standard dummy text.
+                                        Link your social media profiles and ad accounts to centralize your marketing efforts.
                                     </p>
                                 </div>
                             </div>
@@ -152,8 +150,7 @@ const AboutPage = () => {
                                 <div>
                                     <h4 className="text-xl font-bold text-gray-800">Collect and Analyze Data</h4>
                                     <p className="mt-2 text-gray-500 text-sm leading-relaxed max-w-md">
-                                        Lorem ipsum is simply dummy text of the printing and typesetting
-                                        industry. Lorem ipsum has been the standard dummy text.
+                                        Gather comprehensive data points from all channels to build a complete customer view.
                                     </p>
                                 </div>
                             </div>
@@ -165,8 +162,7 @@ const AboutPage = () => {
                                 <div>
                                     <h4 className="text-xl font-bold text-gray-800">Integration with Cloud Files</h4>
                                     <p className="mt-2 text-gray-500 text-sm leading-relaxed max-w-md">
-                                        Lorem ipsum is simply dummy text of the printing and typesetting
-                                        industry. Lorem ipsum has been the standard dummy text.
+                                        Upload, manage, and distribute your creative assets directly from our cloud storage.
                                     </p>
                                 </div>
                             </div>
