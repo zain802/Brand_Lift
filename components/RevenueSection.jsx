@@ -4,21 +4,21 @@ import Image from "next/image";
 
 const RevenueSection = () => {
     return (
-        <section className="py-24 bg-white dark:bg-zinc-900 overflow-hidden">
+        <section className="py-24 bg-white overflow-hidden">
             <div className="max-w-7xl mx-auto px-6">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
                     {/* Left Side - Content */}
                     <div className="lg:pr-10 order-2 lg:order-1">
-                        <h2 className="text-4xl md:text-5xl font-bold text-[#1A1A1A] dark:text-white leading-tight mb-6 font-poppins">
+                        <h2 className="text-4xl md:text-5xl font-bold text-[#1A1A1A] leading-tight mb-6 font-poppins">
                             Maximize Your ROI
                         </h2>
 
-                        <p className="text-gray-500 dark:text-gray-400 text-lg mb-8 leading-relaxed">
+                        <p className="text-gray-500 text-lg mb-8 leading-relaxed">
                             Turn ad spend into real revenue. Our smart algorithms ensure every dollar works hard for your business by targeting the right audience at the right time.
                         </p>
 
-                        <p className="text-gray-500 dark:text-gray-400 text-lg mb-10 leading-relaxed">
+                        <p className="text-gray-500 text-lg mb-10 leading-relaxed">
                             Whether you are a local cafe or a growing agency, Brand Lift scales with you to maximize your profit margins and deliver clear, measurable results.
                         </p>
 

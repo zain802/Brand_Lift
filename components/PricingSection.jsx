@@ -42,14 +42,14 @@ const plans = [
 
 const PricingSection = () => {
     return (
-        <section className="py-24 bg-white dark:bg-zinc-900">
+        <section className="py-24 bg-white">
             <div className="max-w-7xl mx-auto px-6 text-center">
 
-                <h2 className="text-4xl font-bold text-[#1A1A1A] dark:text-white mb-4 font-poppins">
+                <h2 className="text-4xl font-bold text-[#1A1A1A] mb-4 font-poppins">
                     Simple, Transparent Pricing
                 </h2>
 
-                <p className="text-gray-500 dark:text-gray-400 max-w-2xl mx-auto mb-16 text-sm md:text-base">
+                <p className="text-gray-500 max-w-2xl mx-auto mb-16 text-sm md:text-base">
                     Choose the plan that fits your business needs. No hidden fees. Cancel anytime.
                 </p>
 
@@ -60,11 +60,11 @@ const PricingSection = () => {
                             className={`group relative rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2
                 ${plan.highlight
                                     ? "bg-gradient-to-br from-[#2e1065] via-[#4c1d95] to-[#7c3aed] text-white shadow-xl scale-105 z-10"
-                                    : "bg-white dark:bg-black text-[#1A1A1A] dark:text-white shadow-lg border border-gray-100 dark:border-zinc-800 hover:bg-gradient-to-br hover:from-[#2e1065] hover:via-[#4c1d95] hover:to-[#7c3aed]"
+                                    : "bg-white text-[#1A1A1A] shadow-lg border border-gray-100 hover:bg-gradient-to-br hover:from-[#2e1065] hover:via-[#4c1d95] hover:to-[#7c3aed]"
                                 }
               `}
                         >
-                            <h3 className={`text-xl font-medium mb-2 transition-colors ${plan.highlight ? "text-white" : "text-gray-600 dark:text-gray-300 group-hover:text-white"}`}>
+                            <h3 className={`text-xl font-medium mb-2 transition-colors ${plan.highlight ? "text-white" : "text-gray-600 group-hover:text-white"}`}>
                                 {plan.name}
                             </h3>
 
@@ -80,7 +80,7 @@ const PricingSection = () => {
 
                             <ul className="space-y-6 mb-10">
                                 {plan.features.map((feature, idx) => (
-                                    <li key={idx} className={`text-sm transition-colors ${plan.highlight ? "text-white/90" : "text-gray-500 dark:text-gray-400 group-hover:text-white/90"}`}>
+                                    <li key={idx} className={`text-sm transition-colors ${plan.highlight ? "text-white/90" : "text-gray-500 group-hover:text-white/90"}`}>
                                         {feature}
                                     </li>
                                 ))}

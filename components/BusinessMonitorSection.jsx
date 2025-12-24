@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const BusinessMonitorSection = () => {
     return (
-        <section className="py-24 bg-[#F8F9FF] dark:bg-black overflow-hidden">
+        <section className="py-24 bg-[#F8F9FF] overflow-hidden">
             <div className="max-w-7xl mx-auto px-6">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
@@ -41,15 +41,15 @@ const BusinessMonitorSection = () => {
 
                     {/* Right Side - Content */}
                     <div className="lg:pl-10">
-                        <h2 className="text-4xl md:text-5xl font-bold text-[#1A1A1A] dark:text-white leading-tight mb-6 font-poppins">
+                        <h2 className="text-4xl md:text-5xl font-bold text-[#1A1A1A] leading-tight mb-6 font-poppins">
                             Real-Time Performance Tracking
                         </h2>
 
-                        <p className="text-gray-500 dark:text-gray-400 text-lg mb-8 leading-relaxed">
+                        <p className="text-gray-500 text-lg mb-8 leading-relaxed">
                             Stop guessing. Know exactly how your ads are performing with our intuitive dashboard. Track impressions, clicks, and customer engagement as they happen.
                         </p>
 
-                        <p className="text-gray-500 dark:text-gray-400 text-lg mb-10 leading-relaxed">
+                        <p className="text-gray-500 text-lg mb-10 leading-relaxed">
                             Understand your ROI instantly and make data-driven decisions to optimize your budget and grow your business faster.
                         </p>
 
