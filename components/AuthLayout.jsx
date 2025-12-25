@@ -13,14 +13,14 @@ const AuthLayout = ({ children, title, subtitle, switchText, switchLink, switchL
                     <div className="w-10 h-10 border-2 border-white rounded-lg flex items-center justify-center">
                         <span className="text-2xl font-bold">A</span>
                     </div>
-                    <span className="text-2xl font-semibold">Brand Lift</span>
+                    <span className="text-2xl font-semibold">Branding Ups</span>
                 </Link>
 
                 {/* Content Section */}
                 <div className="z-10 text-center">
                     <h2 className="text-white text-4xl font-bold mb-6 leading-tight">Scale Your Brand<br />With Confidence</h2>
                     <p className="text-white/80 text-lg max-w-md mx-auto leading-relaxed mb-12">
-                        Join thousands of businesses that rely on Brand Lift to optimize their advertising and reach new heights.
+                        Join thousands of businesses that rely on Branding Ups to optimize their advertising and reach new heights.
                     </p>
 
                     {/* Features Grid */}

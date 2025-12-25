@@ -1,7 +1,7 @@
 export const endpoints = {
     auth: {
-        login: "auth/login",
-        signup: "auth/signup",
+        login: "v1/auth/login",
+        signup: "v1/auth/signup",
     },
     user: {
         profile: "user/profile",
@@ -10,5 +10,6 @@ export const endpoints = {
     products: {
         list: "products",
         details: (id) => `products/${id}`,
-    }
+    },
+    workspaces: "v1/workspaces/"
 };

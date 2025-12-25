@@ -19,7 +19,7 @@ const Footer = () => {
                     <div>
                         <div className="flex items-center gap-2 mb-6">
                             <Box size={32} className="text-white fill-white/20" />
-                            <span className="text-2xl font-bold">Brand Lift</span>
+                            <span className="text-2xl font-bold">Branding Ups</span>
                         </div>
                         <p className="text-white/70 leading-relaxed mb-8 text-sm">
                             The smartest way for local businesses to advertise online. Simple, automated, and effective.
@@ -74,7 +74,7 @@ const Footer = () => {
                 {/* Bottom Bar */}
                 <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/60">
                     <div className="text-center md:text-left">
-                        Copyright © 2025 Brand Lift. All rights reserved.
+                        Copyright © 2025 Branding Ups. All rights reserved.
                     </div>
                 </div>
             </div>

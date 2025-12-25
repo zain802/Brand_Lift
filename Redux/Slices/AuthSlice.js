@@ -1,11 +1,22 @@
-/**
- * AuthSlice for Redux state management.
- */
-export const selectUser = (state) => state.auth?.user || null;
+import { createSlice } from "@reduxjs/toolkit";
 
-// Initial state and slice logic can be added here.
 const initialState = {
     user: null,
 };
 
-export default initialState;
+const authSlice = createSlice({
+    name: "auth",
+    initialState,
+    reducers: {
+        setUser: (state, action) => {
+            state.user = action.payload;
+        },
+        logout: (state) => {
+            state.user = null;
+        },
+    },
+});
+
+export const { setUser, logout } = authSlice.actions;
+export const selectUser = (state) => state.auth.user;
+export default authSlice.reducer;

@@ -22,7 +22,7 @@ const Header = () => {
                         <div className="w-9 h-9 border-2 border-white rounded-lg flex items-center justify-center">
                             <span className="text-xl font-bold">A</span>
                         </div>
-                        <span className="text-xl font-semibold">Brand Lift</span>
+                        <span className="text-xl font-semibold">Branding Ups</span>
                     </Link>
 
                     {/* Desktop Menu */}
@@ -57,9 +57,6 @@ const Header = () => {
                         <Link href="/about" className="text-white/90 hover:text-[#FF8A42] transition">About</Link>
                         <Link href="/blog" className="text-white/90 hover:text-[#FF8A42] transition">Blog</Link>
                         <Link href="/contact" className="text-white/90 hover:text-[#FF8A42] transition">Contact</Link>
-                        <Link href="/dashboard" className="px-5 py-2 bg-white/10 text-white rounded-full hover:bg-white/20 transition backdrop-blur-sm border border-white/20">
-                            Dashboard
-                        </Link>
                     </nav>
 
                     {/* Desktop Button */}

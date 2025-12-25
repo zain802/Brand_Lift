@@ -1,10 +1,29 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import { Bell, MapPin, User, Menu as MenuIcon, LogOut, ChevronDown, UserCircle } from "lucide-react";
+import { Bell, MapPin, Menu as MenuIcon, LogOut, ChevronDown, UserCircle } from "lucide-react";
+import { useDispatch, useSelector } from "react-redux";
+import { logout, selectUser } from "@/Redux/Slices/AuthSlice";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
+import { decryptData } from "@/utils/encrypt";
 
 const Topbar = ({ onMenuClick }) => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const dispatch = useDispatch();
+    const router = useRouter();
+    const encryptedUser = useSelector(selectUser);
+
+    // Decrypt user data if available
+    const userData = encryptedUser ? decryptData(encryptedUser) : null;
+    const userName = userData?.data?.user?.full_name || "User";
+    const userRole = userData?.data?.user?.user_type || "Member";
+
+    const handleLogout = () => {
+        dispatch(logout());
+        toast.info("Logged out successfully");
+        router.push("/login");
+    };
 
     return (
         <header className="h-16 bg-white border-b border-gray-100 px-4 md:px-8 flex items-center justify-between gap-4 sticky top-0 z-40">
@@ -15,25 +34,12 @@ const Topbar = ({ onMenuClick }) => {
                 >
                     <MenuIcon size={24} />
                 </button>
-                <h1 className="text-base md:text-lg font-bold text-gray-600 truncate">
-                    The Daily Grind Cafe
+                <h1 className="text-base md:text-xl lg:text-2xl font-bold text-gray-800 truncate">
+                    Branding Ups
                 </h1>
             </div>
 
             <div className="flex items-center gap-4 md:gap-8 shrink-0">
-                <button className="text-gray-500 hover:text-gray-700 transition-colors p-1">
-                    <Bell size={22} className="fill-current" />
-                </button>
-
-                <div className="relative">
-                    <button className="text-red-500 hover:text-red-600 transition-colors p-1">
-                        <MapPin size={22} className="fill-current" />
-                    </button>
-                    {/* Notification dot shown in the design */}
-                    <span className="absolute top-0 right-0 w-4 h-4 bg-white rounded-full flex items-center justify-center">
-                        <span className="w-2.5 h-2.5 bg-red-500 rounded-full border border-white"></span>
-                    </span>
-                </div>
 
                 <div
                     className="relative flex items-center gap-2 pl-2 md:pl-4 group"
@@ -57,8 +63,8 @@ const Topbar = ({ onMenuClick }) => {
                     {isDropdownOpen && (
                         <div className="absolute top-full right-0 mt-1 w-48 bg-white rounded-2xl shadow-2xl border border-gray-50 py-2 animate-in fade-in zoom-in-95 duration-200 z-50">
                             <div className="px-4 py-3 border-b border-gray-50 mb-1">
-                                <p className="text-xs font-black text-gray-400 uppercase tracking-widest mb-0.5">Account</p>
-                                <p className="text-sm font-bold text-gray-800 truncate">Alex Jackson</p>
+                                <p className="text-xs font-black text-gray-400 uppercase tracking-widest mb-0.5">{userRole}</p>
+                                <p className="text-sm font-bold text-gray-800 truncate">{userName}</p>
                             </div>
 
                             <button className="w-full flex items-center gap-3 px-4 py-2.5 text-sm font-bold text-gray-600 hover:bg-purple-50 hover:text-[#7c3aed] transition-colors">
@@ -66,7 +72,10 @@ const Topbar = ({ onMenuClick }) => {
                                 Profile Details
                             </button>
 
-                            <button className="w-full flex items-center gap-3 px-4 py-2.5 text-sm font-bold text-red-500 hover:bg-red-50 transition-colors mt-1">
+                            <button
+                                onClick={handleLogout}
+                                className="w-full flex items-center gap-3 px-4 py-2.5 text-sm font-bold text-red-500 hover:bg-red-50 transition-colors mt-1"
+                            >
                                 <LogOut size={18} />
                                 Sign Out
                             </button>

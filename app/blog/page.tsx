@@ -95,7 +95,7 @@ export default function BlogPage() {
             {/* Blog Grid */}
             <section className="py-20">
                 <div className="max-w-7xl mx-auto px-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         {blogPosts.map((post) => (
                             <article
                                 key={post.id}

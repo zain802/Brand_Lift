@@ -8,6 +8,7 @@ import {
     Briefcase,
     PlusCircle,
     PlayCircle,
+    Store,
     FileText,
     LogOut
 } from "lucide-react";
@@ -19,8 +20,9 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
 
     const menuItems = [
         { name: "Dashboard", icon: <LayoutDashboard size={20} />, href: "/dashboard" },
-        { name: "Work Space", icon: <Briefcase size={20} />, href: "/dashboard/workspace" },
+        // { name: "Work Space", icon: <Briefcase size={20} />, href: "/dashboard/workspace" },
         { name: "Brand", icon: <Briefcase size={20} />, href: "/dashboard/brand" },
+        { name: "Shop", icon: <Store size={20} />, href: "/dashboard/shops" },
         { name: "Create Ads", icon: <PlusCircle size={20} />, href: "/dashboard/create-ads" },
         { name: "Profile", icon: <User size={20} />, href: "/dashboard/profile" },
     ];
@@ -37,7 +39,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
                     <div className="w-10 h-10 border-2 border-white rounded-lg flex items-center justify-center">
                         <span className="text-xl font-bold">A</span>
                     </div>
-                    <span className="text-xl font-bold tracking-tight">Brand Lift</span>
+                    <span className="text-xl font-bold tracking-tight">Branding Ups</span>
                 </div>
                 <button
                     onClick={() => setIsOpen(false)}

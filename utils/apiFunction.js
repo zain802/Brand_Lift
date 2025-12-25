@@ -8,26 +8,23 @@ import { selectUser } from "../Redux/Slices/AuthSlice";
 import { decryptData } from "./encrypt";
 
 // Update the base URL according to your environment
-export const baseURL = "http://192.168.18.60:9000/api/";
-// export const baseURL = "https://api.protectllc.us/api/";
+// export const baseURL = "https://wise-ottawa-gardens-extensions.trycloudflare.com/api/";
+// export const baseURL = "https://fool-rows-criticism-egg.trycloudflare.com/api/";
+export const baseURL = "https://prizes-inquiries-means-keep.trycloudflare.com/api/";
 
-/**
- * apiFunction is a custom hook that provides methods for API calls
- * with built-in deduplication and automatic authorization header management.
- */
 const apiFunction = () => {
     const encryptedUser = useSelector(selectUser);
     const userData = encryptedUser ? decryptData(encryptedUser) : null;
-    const token = userData?.data?.tokens?.accessToken;
+    const token = userData?.access_token || userData?.data?.tokens?.accessToken;
 
     const header1 = {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
+        ...(token ? { Authorization: `Bearer ${token}` } : {}),
     };
 
     const header2 = {
         "Content-Type": "multipart/form-data",
-        Authorization: `Bearer ${token}`,
+        ...(token ? { Authorization: `Bearer ${token}` } : {}),
     };
 
     const header3 = {};

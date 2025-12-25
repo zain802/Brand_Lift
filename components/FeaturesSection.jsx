@@ -48,7 +48,7 @@ const FeaturesSection = () => {
                 </p>
 
                 {/* Cards */}
-                <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-4">
                     {features.map((feature, index) => (
                         <div
                             key={index}

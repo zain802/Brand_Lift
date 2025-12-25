@@ -10,9 +10,12 @@ const RecentAds = () => {
     ];
 
     return (
-        <div className="mt-8 md:mt-12 bg-gray-50/50 rounded-xl">
-            <h3 className="text-xl font-bold text-gray-800 mb-6 px-2">Recent Ads</h3>
-            <div className="bg-white rounded-[15px] overflow-hidden">
+        <div className="mt-8 md:mt-12 bg-gray-50/50 rounded-2xl">
+            <div className="flex items-center justify-between mb-6 px-4">
+                <h3 className="text-xl md:text-2xl font-bold text-gray-800 tracking-tight">Recent Ads</h3>
+                <button className="text-[#7c3aed] text-sm font-semibold hover:underline">View All</button>
+            </div>
+            <div className="bg-white rounded-[15px] overflow-hidden shadow-lg">
                 <div className="overflow-x-auto scrollbar-hide">
                     <div className="min-w-full">
                         {ads.map((ad, idx) => (

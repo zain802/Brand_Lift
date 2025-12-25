@@ -53,7 +53,7 @@ const PricingSection = () => {
                     Choose the plan that fits your business needs. No hidden fees. Cancel anytime.
                 </p>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
                     {plans.map((plan, index) => (
                         <div
                             key={index}

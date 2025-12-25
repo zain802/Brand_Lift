@@ -10,9 +10,12 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Brand Lift",
+  title: "Branding Ups",
   description: "Grow your business with creative solutions",
 };
+
+import { Toaster } from "sonner";
+import ReduxProvider from "@/components/ReduxProvider";
 
 export default function RootLayout({
   children,
@@ -22,7 +25,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${poppins.variable} font-sans antialiased`}>
-        <LayoutWrapper>{children}</LayoutWrapper>
+        <Toaster richColors position="top-right" />
+        <ReduxProvider>
+          <LayoutWrapper>{children}</LayoutWrapper>
+        </ReduxProvider>
       </body>
     </html>
   );

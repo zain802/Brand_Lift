@@ -1,30 +1,47 @@
 "use client";
 import React, { useState, useRef } from "react";
-import Select from "react-select";
+import { useForm, Controller } from "react-hook-form";
 import {
     FileText,
     Image as ImageIcon,
     Target,
-    DollarSign,
-    ChevronRight,
     Check,
-    MapPin,
-    Users,
     Upload,
     ArrowLeft,
     X,
-    Plus,
-    Layout
+    ChevronRight,
+    MapPin,
+    Calendar,
+    DollarSign,
+    Clock
 } from "lucide-react";
+import FormInput from "@/components/common/FormInput";
+import FormSelect from "@/components/common/FormSelect";
 
-const AdForm = ({ onBack, onSubmit }) => {
+const AdForm = ({ onBack, onSubmit, editData = null }) => {
     const [step, setStep] = useState(1);
-    const [selectedAgeGroups, setSelectedAgeGroups] = useState([]);
-    const [imagePreview, setImagePreview] = useState(null);
-    const [interestTags, setInterestTags] = useState([]);
+    const [selectedAgeGroups, setSelectedAgeGroups] = useState(editData?.target_age_groups || []);
+    const [imagePreview, setImagePreview] = useState(editData?.image || null);
+    const [interestTags, setInterestTags] = useState(editData?.target_interests || []);
     const [interestInput, setInterestInput] = useState("");
     const [showSuccessModal, setShowSuccessModal] = useState(false);
     const fileInputRef = useRef(null);
+
+    const { register, handleSubmit, control, formState: { errors } } = useForm({
+        defaultValues: {
+            title: editData?.title || "",
+            location: editData?.location || "",
+            description: editData?.description || "",
+            radius_km: editData?.radius_km || 15,
+            target_provinces: editData?.target_provinces || "",
+            target_cities: editData?.target_cities || "",
+            target_gender: editData ? { value: editData.target_gender?.toLowerCase(), label: editData.target_gender } : null,
+            start_date: editData?.start_date || "",
+            end_date: editData?.end_date || "",
+            price: editData?.price || "",
+            duration: editData ? { value: editData.duration?.toLowerCase(), label: editData.duration } : null,
+        }
+    });
 
     const totalSteps = 4;
 
@@ -48,9 +65,7 @@ const AdForm = ({ onBack, onSubmit }) => {
         const file = e.target.files[0];
         if (file) {
             const reader = new FileReader();
-            reader.onloadend = () => {
-                setImagePreview(reader.result);
-            };
+            reader.onloadend = () => setImagePreview(reader.result);
             reader.readAsDataURL(file);
         }
     };
@@ -70,40 +85,17 @@ const AdForm = ({ onBack, onSubmit }) => {
         setInterestTags(interestTags.filter(t => t !== tag));
     };
 
-    // Styling constants
-    const inputWrapperClass = "relative mb-6";
-    const labelClass = "absolute -top-3 left-4 bg-white px-1 text-xs text-gray-400 z-10";
-    const inputClass = "w-full px-4 py-3 border border-gray-200 bg-white rounded-2xl focus:outline-none focus:border-[#7c3aed] transition text-sm";
-
-    const navButtonBase = "h-[45px] w-[120px] rounded-2xl font-bold transition-all flex items-center justify-center gap-2 text-sm font-poppins";
-    const buttonPrimaryClass = `${navButtonBase} bg-[#7c3aed] text-white hover:bg-[#6d28d9] shadow-purple-100 hover:shadow-purple-200`;
-    const buttonSecondaryClass = `${navButtonBase} border border-gray-200 text-gray-500 hover:bg-gray-50`;
-
-    const customSelectStyles = {
-        control: (base, state) => ({
-            ...base,
-            borderRadius: '16px',
-            padding: '4px 8px',
-            borderColor: state.isFocused ? '#7c3aed' : '#e5e7eb',
-            boxShadow: 'none',
-            '&:hover': {
-                borderColor: '#7c3aed'
-            }
-        }),
-        placeholder: (base) => ({
-            ...base,
-            color: '#9ca3af',
-            fontSize: '14px'
-        }),
-        option: (base, state) => ({
-            ...base,
-            backgroundColor: state.isSelected ? '#7c3aed' : state.isFocused ? '#f5f3ff' : 'white',
-            color: state.isSelected ? 'white' : '#374151',
-            fontSize: '14px',
-            '&:active': {
-                backgroundColor: '#7c3aed'
-            }
-        })
+    const onFormSubmit = (data) => {
+        const finalData = {
+            ...data,
+            target_age_groups: selectedAgeGroups,
+            target_interests: interestTags,
+            image: imagePreview,
+            target_gender: data.target_gender?.label,
+            duration: data.duration?.label,
+        };
+        setShowSuccessModal(true);
+        // The actual submission will happen when the user clicks the button in the modal
     };
 
     const steps = [
@@ -126,41 +118,47 @@ const AdForm = ({ onBack, onSubmit }) => {
     ];
 
     return (
-        <div className="max-w-6xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-500 pb-20 font-poppins">
-            {/* Header */}
-            <div className="flex items-center justify-between mb-8">
+        <div className="max-w-6xl mx-auto animate-in fade-in slide-in-from-bottom-8 duration-700 pb-20 font-poppins px-4">
+            {/* Design Header */}
+            <div className="bg-white rounded-[20px] p-6 shadow-[0_15px_40px_rgba(0,0,0,0.02)] border border-gray-50 flex flex-col md:flex-row md:items-center justify-between gap-6 mb-5">
+                <div>
+                    <h2 className="text-3xl md:text-4xl font-black text-gray-800 tracking-tighter leading-none">
+                        {editData ? "Refine Campaign" : "Construct Campaign"}
+                    </h2>
+                    <p className="text-gray-400 text-xs font-medium mt-2 leading-relaxed">
+                        Follow the multi-step configuration to launch your tactical advertisement.
+                    </p>
+                </div>
+
                 <button
                     onClick={onBack}
-                    className="flex items-center gap-2 text-gray-400 hover:text-gray-800 transition-colors group"
+                    className="w-full md:w-auto px-4 py-2 rounded-[15px] font-black bg-gray-100 text-gray-400 border border-gray-100 hover:text-gray-800 hover:-translate-y-0.5 transition-all flex items-center justify-center gap-3 text-[10px] uppercase tracking-[0.2em] active:scale-95 group"
                 >
-                    <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
-                    <span className="font-bold">Back to Campaigns</span>
+                    <ArrowLeft size={18} strokeWidth={3} className="group-hover:-translate-x-1 transition-transform duration-300" />
+                    Back
                 </button>
-                <div className="bg-purple-50 px-4 py-1.5 rounded-full">
-                    <span className="text-sm font-bold text-[#7c3aed]">Step {step} of 4</span>
-                </div>
             </div>
 
             {/* Stepper */}
-            <div className="bg-white rounded-[15px] p-6 mb-4 mt-2 overflow-x-auto">
+            <div className="bg-white rounded-[20px] p-8 mb-5 border border-gray-50 shadow-[0_10px_30px_rgba(0,0,0,0.01)] overflow-x-auto">
                 <div className="flex items-center justify-between min-w-[500px] px-8">
                     {steps.map((s, idx) => (
                         <React.Fragment key={s.id}>
-                            <div className="flex flex-col items-center gap-2 relative">
-                                <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${step > s.id
-                                    ? "bg-green-500 text-white"
+                            <div className="flex flex-col items-center gap-3 relative group">
+                                <div className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-500 ${step > s.id
+                                    ? "bg-green-500 text-white shadow-lg shadow-green-100"
                                     : step === s.id
-                                        ? "bg-[#7c3aed] text-white shadow-lg shadow-purple-200"
-                                        : "bg-gray-100 text-gray-400"
+                                        ? "bg-[#7c3aed] text-white shadow-xl shadow-purple-100 scale-110"
+                                        : "bg-gray-50 text-gray-300 border border-gray-100"
                                     }`}>
-                                    {step > s.id ? <Check size={20} /> : s.icon}
+                                    {step > s.id ? <Check size={22} strokeWidth={3} /> : s.icon}
                                 </div>
-                                <span className={`text-[10px] font-bold uppercase tracking-widest ${step === s.id ? "text-[#7c3aed]" : "text-gray-400"}`}>
+                                <span className={`text-[10px] font-black uppercase tracking-[0.2em] ${step === s.id ? "text-[#7c3aed]" : "text-gray-400"}`}>
                                     {s.name}
                                 </span>
                             </div>
                             {idx < steps.length - 1 && (
-                                <div className={`h-[2px] w-full mx-6 rounded-full transition-colors duration-500 ${step > s.id + 1 ? "bg-green-500" : "bg-gray-100"}`} />
+                                <div className={`h-[2px] w-full mx-6 rounded-full transition-all duration-700 ${step > idx + 1 ? "bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.3)]" : "bg-gray-100"}`} />
                             )}
                         </React.Fragment>
                     ))}
@@ -168,33 +166,42 @@ const AdForm = ({ onBack, onSubmit }) => {
             </div>
 
             {/* Form Card */}
-            <div className="bg-white rounded-[15px] overflow-hidden mb-12 min-h-[500px]">
+            <div className="bg-white rounded-[20px] shadow-[0_30px_70px_rgba(0,0,0,0.03)] border border-gray-50 overflow-hidden mb-12 min-h-[500px]">
                 <div className="p-8 md:p-12">
-                    <form onSubmit={(e) => e.preventDefault()}>
+                    <form onSubmit={handleSubmit(onFormSubmit)}>
                         {/* Step 1: Identity */}
                         {step === 1 && (
                             <div className="animate-in fade-in slide-in-from-right-4 duration-500">
                                 <div className="mb-10 border-b border-gray-50 pb-6">
-                                    <h2 className="text-2xl font-black text-gray-800">Campaign Identity</h2>
-                                    <p className="text-gray-400 text-sm mt-1">Start by defining how your campaign will be identified.</p>
+                                    <h2 className="text-2xl font-black text-gray-800 tracking-tight">Campaign Identity</h2>
+                                    <p className="text-gray-400 text-xs font-bold uppercase tracking-widest mt-1">Foundational Info</p>
                                 </div>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-2">
-                                    <div className={inputWrapperClass}>
-                                        <label className={labelClass}>Campaign Title</label>
-                                        <input type="text" placeholder="e.g. Summer Fashion New Collection 2025" className={inputClass} />
-                                    </div>
-                                    <div className={inputWrapperClass}>
-                                        <label className={labelClass}>Location</label>
-                                        <input type="text" placeholder="e.g. Faisalabad HQ" className={inputClass} />
-                                    </div>
-                                    <div className={`md:col-span-2 ${inputWrapperClass}`}>
-                                        <label className={labelClass}>Description / Brand Details</label>
-                                        <textarea
-                                            rows={6}
-                                            placeholder="Get the best chic and editorial styles with up to 50% OFF..."
-                                            className={`${inputClass} resize-none py-4`}
-                                        ></textarea>
-                                    </div>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2">
+                                    <FormInput
+                                        label="Campaign Title"
+                                        name="title"
+                                        placeholder="e.g. Summer Fashion 2025"
+                                        icon={FileText}
+                                        register={register("title", { required: "Title is required" })}
+                                        error={errors.title}
+                                    />
+                                    <FormInput
+                                        label="Primary Location"
+                                        name="location"
+                                        placeholder="e.g. Faisalabad HQ"
+                                        icon={MapPin}
+                                        register={register("location", { required: "Location is required" })}
+                                        error={errors.location}
+                                    />
+                                    <FormInput
+                                        label="Campaign Description"
+                                        name="description"
+                                        placeholder="Detailed brand story and goals..."
+                                        textarea={true}
+                                        rows={5}
+                                        className="md:col-span-2"
+                                        register={register("description")}
+                                    />
                                 </div>
                             </div>
                         )}
@@ -203,15 +210,15 @@ const AdForm = ({ onBack, onSubmit }) => {
                         {step === 2 && (
                             <div className="animate-in fade-in slide-in-from-right-4 duration-500">
                                 <div className="mb-10 border-b border-gray-50 pb-6">
-                                    <h2 className="text-2xl font-black text-gray-800">Ad Creative</h2>
-                                    <p className="text-gray-400 text-sm mt-1">Upload the visual content for your campaign.</p>
+                                    <h2 className="text-2xl font-black text-gray-800 tracking-tight">Ad Creative</h2>
+                                    <p className="text-gray-400 text-xs font-bold uppercase tracking-widest mt-1">Visual Branding</p>
                                 </div>
 
                                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
                                     <div className="space-y-8">
                                         <div
                                             onClick={() => fileInputRef.current?.click()}
-                                            className="border-2 border-dashed border-gray-100 rounded-[32px] p-12 flex flex-col items-center justify-center gap-5 bg-gray-50/50 hover:bg-purple-50/20 hover:border-purple-200 transition-all group cursor-pointer"
+                                            className="border-2 border-dashed border-gray-100 rounded-[32px] p-12 flex flex-col items-center justify-center gap-5 bg-gray-50/50 hover:bg-white hover:border-purple-200 transition-all group cursor-pointer shadow-inner"
                                         >
                                             <input
                                                 type="file"
@@ -220,30 +227,27 @@ const AdForm = ({ onBack, onSubmit }) => {
                                                 accept="image/*"
                                                 onChange={handleImageUpload}
                                             />
-                                            <div className="w-16 h-16 bg-white rounded-3xl shadow-lg flex items-center justify-center text-gray-300 group-hover:text-[#7c3aed] group-hover:scale-110 transition-all">
+                                            <div className="w-16 h-16 bg-white rounded-3xl shadow-lg flex items-center justify-center text-gray-200 group-hover:text-[#7c3aed] group-hover:scale-110 transition-all">
                                                 <Upload size={30} />
                                             </div>
                                             <div className="text-center">
-                                                <p className="font-bold text-gray-700">Click to Upload Image</p>
-                                                <p className="text-xs text-gray-400 mt-2">PNG, JPG or WEBP (Max. 5MB)</p>
+                                                <p className="font-black text-gray-600 uppercase text-[10px] tracking-widest">Select Visual Data</p>
+                                                <p className="text-[9px] text-gray-300 font-bold mt-2 uppercase">PNG, JPG or WEBP (Standard Tier)</p>
                                             </div>
                                         </div>
-                                        <div className={inputWrapperClass}>
-                                            <label className={labelClass}>Or Paste External URL</label>
-                                            <input
-                                                type="text"
-                                                placeholder="https://..."
-                                                onChange={(e) => setImagePreview(e.target.value)}
-                                                className={inputClass}
-                                            />
-                                        </div>
+
+                                        <FormInput
+                                            label="External Resource URL"
+                                            placeholder="https://cloud-storage.com/asset.jpg"
+                                            onChange={(e) => setImagePreview(e.target.value)}
+                                            icon={ImageIcon}
+                                        />
                                     </div>
 
                                     <div className="relative group min-h-[300px]">
-                                        <div className="absolute -inset-1 bg-gradient-to-r from-[#2e1065] to-[#7c3aed] rounded-[24px] blur opacity-10 group-hover:opacity-20 transition duration-1000"></div>
-                                        <div className="relative h-full bg-gray-50 rounded-[20px] overflow-hidden border border-gray-100 flex items-center justify-center">
+                                        <div className="relative h-full bg-gray-50 rounded-[24px] overflow-hidden border border-gray-100 flex items-center justify-center shadow-lg transition-transform duration-700 group-hover:scale-[1.01]">
                                             {imagePreview ? (
-                                                <div className="relative w-full h-full group/img">
+                                                <div className="relative w-full h-full">
                                                     <img
                                                         src={imagePreview}
                                                         alt="Preview"
@@ -251,22 +255,15 @@ const AdForm = ({ onBack, onSubmit }) => {
                                                     />
                                                     <button
                                                         onClick={() => setImagePreview(null)}
-                                                        className="absolute top-2 right-2 w-7 h-7 bg-black/50 hover:bg-black/80 text-white rounded-full flex items-center justify-center transition-all backdrop-blur-sm z-30 shadow-lg"
-                                                        title="Remove Image"
+                                                        className="absolute top-4 right-4 w-10 h-10 bg-white/90 hover:bg-white text-red-500 rounded-2xl flex items-center justify-center transition-all backdrop-blur-sm shadow-xl z-30"
                                                     >
-                                                        <X size={14} />
+                                                        <X size={18} strokeWidth={3} />
                                                     </button>
                                                 </div>
                                             ) : (
-                                                <div className="flex flex-col items-center gap-3 text-gray-300">
+                                                <div className="flex flex-col items-center gap-4 text-gray-300">
                                                     <ImageIcon size={60} className="opacity-10" />
-                                                    <p className="text-xs font-black uppercase tracking-widest opacity-30">Live Visual Preview</p>
-                                                </div>
-                                            )}
-                                            {imagePreview && (
-                                                <div className="absolute bottom-4 left-4 right-4 p-4 bg-white/90 backdrop-blur-md rounded-xl shadow-sm border border-gray-100/50">
-                                                    <p className="text-[10px] font-black text-[#7c3aed] uppercase tracking-widest mb-1">Active Preview</p>
-                                                    <p className="text-xs font-bold text-gray-800 truncate">Ad Creative Preview</p>
+                                                    <p className="text-[10px] font-black uppercase tracking-[0.3em] opacity-30">Neural Preview Active</p>
                                                 </div>
                                             )}
                                         </div>
@@ -279,67 +276,78 @@ const AdForm = ({ onBack, onSubmit }) => {
                         {step === 3 && (
                             <div className="animate-in fade-in slide-in-from-right-4 duration-500">
                                 <div className="mb-10 border-b border-gray-50 pb-6">
-                                    <h2 className="text-2xl font-black text-gray-800">Targeting Strategy</h2>
-                                    <p className="text-gray-400 text-sm mt-1">Define your location, radius and ideal audience parameters.</p>
+                                    <h2 className="text-2xl font-black text-gray-800 tracking-tight">Targeting Strategy</h2>
+                                    <p className="text-gray-400 text-xs font-bold uppercase tracking-widest mt-1">Audience Parameters</p>
                                 </div>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-2">
-                                    <div className={inputWrapperClass}>
-                                        <label className={labelClass}>Radius (km)</label>
-                                        <input type="number" placeholder="15" className={inputClass} />
-                                    </div>
-                                    <div className={inputWrapperClass}>
-                                        <label className={labelClass}>Target Provinces (Comma Separated)</label>
-                                        <input type="text" placeholder="e.g. Punjab, Sindh" className={inputClass} />
-                                    </div>
-                                    <div className={inputWrapperClass}>
-                                        <label className={labelClass}>Target Cities (Comma Separated)</label>
-                                        <input type="text" placeholder="e.g. Faisalabad, Lahore, Karachi" className={inputClass} />
-                                    </div>
-                                    <div className={inputWrapperClass}>
-                                        <label className={labelClass}>Target Gender</label>
-                                        <Select
-                                            options={genderOptions}
-                                            styles={customSelectStyles}
-                                            placeholder="Select Gender"
-                                            className="text-sm"
-                                        />
-                                    </div>
-                                    <div className={inputWrapperClass}>
-                                        <label className={labelClass}>Interests (Type & Enter)</label>
-                                        <div className="flex flex-col gap-3">
-                                            <input
-                                                type="text"
-                                                placeholder="fashion, shopping, lifestyle..."
-                                                value={interestInput}
-                                                onChange={(e) => setInterestInput(e.target.value)}
-                                                onKeyDown={addInterestTag}
-                                                className={inputClass}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2">
+                                    <FormInput
+                                        label="Service Radius (KM)"
+                                        name="radius_km"
+                                        type="number"
+                                        placeholder="15"
+                                        icon={Target}
+                                        register={register("radius_km")}
+                                    />
+
+                                    <Controller
+                                        name="target_gender"
+                                        control={control}
+                                        render={({ field }) => (
+                                            <FormSelect
+                                                label="Demographic Gender"
+                                                options={genderOptions}
+                                                field={field}
+                                                placeholder="Select Gender..."
                                             />
-                                        </div>
-                                    </div>
-                                    <div className="md:col-span-1 flex flex-wrap gap-2 pt-2">
+                                        )}
+                                    />
+
+                                    <FormInput
+                                        label="Target Provinces"
+                                        name="target_provinces"
+                                        placeholder="e.g. Punjab, Sindh"
+                                        register={register("target_provinces")}
+                                    />
+
+                                    <FormInput
+                                        label="Target Cities"
+                                        name="target_cities"
+                                        placeholder="e.g. Lahore, Islamabad"
+                                        register={register("target_cities")}
+                                    />
+
+                                    <FormInput
+                                        label="Interest Matrix (Type & Enter)"
+                                        placeholder="fashion, lifestyle, luxury..."
+                                        value={interestInput}
+                                        onChange={(e) => setInterestInput(e.target.value)}
+                                        onKeyDown={addInterestTag}
+                                        className="md:col-span-2"
+                                    />
+
+                                    <div className="md:col-span-2 flex flex-wrap gap-2 mb-8">
                                         {interestTags.map(tag => (
-                                            <span key={tag} className="flex items-center gap-1.5 px-3 py-1.5 bg-purple-50 text-[#7c3aed] text-xs font-bold rounded-full border border-purple-100 animate-in zoom-in-50 duration-300">
+                                            <span key={tag} className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-50 to-white text-[#7c3aed] text-[10px] font-black uppercase tracking-widest rounded-xl border border-purple-100 shadow-sm animate-in zoom-in-50 duration-300 group">
                                                 {tag}
-                                                <button onClick={() => removeInterestTag(tag)} className="hover:text-red-500 transition-colors">
-                                                    <X size={12} />
+                                                <button onClick={() => removeInterestTag(tag)} className="text-gray-300 hover:text-red-500 transition-colors">
+                                                    <X size={12} strokeWidth={3} />
                                                 </button>
                                             </span>
                                         ))}
                                     </div>
 
                                     {/* Age Multi-select */}
-                                    <div className="md:col-span-2 mb-8 mt-4">
-                                        <label className="text-sm font-bold text-gray-700 block mb-4 ml-1">Ideal Age Range (Target Age Groups)</label>
+                                    <div className="md:col-span-2 mt-4">
+                                        <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest block mb-4 ml-1">Target Age Clusters</label>
                                         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                                             {["18-24", "25-34", "35-44", "45+"].map(age => (
                                                 <button
                                                     key={age}
                                                     type="button"
                                                     onClick={() => toggleAgeGroup(age)}
-                                                    className={`py-3.5 px-5 rounded-2xl font-bold text-xs border transition-all ${selectedAgeGroups.includes(age)
-                                                        ? "bg-[#7c3aed] text-white border-[#7c3aed] shadow-lg shadow-purple-100"
-                                                        : "bg-white text-gray-400 border-gray-100 hover:border-gray-200"
+                                                    className={`py-4 px-6 rounded-2xl font-black text-[10px] uppercase tracking-widest border transition-all duration-300 ${selectedAgeGroups.includes(age)
+                                                        ? "bg-[#7c3aed] text-white border-[#7c3aed] shadow-lg shadow-purple-100 scale-[1.05]"
+                                                        : "bg-white text-gray-400 border-gray-100 hover:border-purple-200"
                                                         }`}
                                                 >
                                                     {age}
@@ -355,42 +363,55 @@ const AdForm = ({ onBack, onSubmit }) => {
                         {step === 4 && (
                             <div className="animate-in fade-in slide-in-from-right-4 duration-500">
                                 <div className="mb-10 border-b border-gray-50 pb-6">
-                                    <h2 className="text-2xl font-black text-gray-800">Budget & Timeline</h2>
-                                    <p className="text-gray-400 text-sm mt-1">Finalize your campaign duration and cost (Listing Price).</p>
+                                    <h2 className="text-2xl font-black text-gray-800 tracking-tight">Timeline & Commercials</h2>
+                                    <p className="text-gray-400 text-xs font-bold uppercase tracking-widest mt-1">Final Sync</p>
                                 </div>
 
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-2">
-                                    <div className={inputWrapperClass}>
-                                        <label className={labelClass}>Start Date</label>
-                                        <input type="datetime-local" className={`${inputClass} text-gray-500`} />
-                                    </div>
-                                    <div className={inputWrapperClass}>
-                                        <label className={labelClass}>End Date</label>
-                                        <input type="datetime-local" className={`${inputClass} text-gray-500`} />
-                                    </div>
-                                    <div className={inputWrapperClass}>
-                                        <label className={labelClass}>Listing Price (PKR)</label>
-                                        <input type="number" placeholder="e.g. 1500" className={inputClass} />
-                                    </div>
-                                    <div className={inputWrapperClass}>
-                                        <label className={labelClass}>Duration</label>
-                                        <Select
-                                            options={durationOptions}
-                                            styles={customSelectStyles}
-                                            placeholder="Select Duration"
-                                            className="text-sm"
-                                        />
-                                    </div>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2">
+                                    <FormInput
+                                        label="Active From"
+                                        name="start_date"
+                                        type="datetime-local"
+                                        icon={Calendar}
+                                        register={register("start_date")}
+                                    />
+                                    <FormInput
+                                        label="Active Until"
+                                        name="end_date"
+                                        type="datetime-local"
+                                        icon={Clock}
+                                        register={register("end_date")}
+                                    />
+                                    <FormInput
+                                        label="Listing Price (PKR)"
+                                        name="price"
+                                        type="number"
+                                        placeholder="0.00"
+                                        icon={DollarSign}
+                                        register={register("price")}
+                                    />
+                                    <Controller
+                                        name="duration"
+                                        control={control}
+                                        render={({ field }) => (
+                                            <FormSelect
+                                                label="Broadcast Duration"
+                                                options={durationOptions}
+                                                field={field}
+                                                placeholder="Select Frequency..."
+                                            />
+                                        )}
+                                    />
                                 </div>
 
-                                <div className="bg-purple-50 rounded-2xl p-8 border border-purple-100/50 flex items-start gap-5 mt-6 animate-in slide-in-from-bottom-2">
-                                    <div className="w-12 h-12 bg-[#7c3aed] rounded-xl flex items-center justify-center text-white flex-shrink-0">
-                                        <Check size={24} />
+                                <div className="bg-[#7c3aed] rounded-[24px] p-8 text-white flex items-start gap-6 mt-8 animate-in slide-in-from-bottom-4 shadow-2xl shadow-purple-200">
+                                    <div className="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center backdrop-blur-md flex-shrink-0">
+                                        <Check size={28} strokeWidth={3} />
                                     </div>
                                     <div>
-                                        <h4 className="font-bold text-gray-800 text-lg">Ready for Submission</h4>
-                                        <p className="text-sm text-gray-500 mt-1 leading-relaxed">
-                                            Your campaign data is ready. Once launched, it will be mapped to the server for processing.
+                                        <h4 className="font-black text-lg tracking-tight">System Integrity Verified</h4>
+                                        <p className="text-white/70 text-xs font-medium mt-1 leading-relaxed">
+                                            Your campaign parameters are optimized. Finalizing the broadcast will sync this asset to the global directory.
                                         </p>
                                     </div>
                                 </div>
@@ -398,27 +419,34 @@ const AdForm = ({ onBack, onSubmit }) => {
                         )}
 
                         {/* Footer Controls */}
-                        <div className=" flex items-center justify-between pt-10">
+                        <div className="flex items-center justify-between pt-12 border-t border-gray-50 mt-12">
                             <div>
                                 {step > 1 && (
-                                    <button type="button" onClick={prevStep} className={buttonSecondaryClass}>
-                                        Previous
+                                    <button
+                                        type="button"
+                                        onClick={prevStep}
+                                        className="px-10 py-4 rounded-2xl font-black text-[10px] uppercase tracking-[0.2em] text-gray-400 hover:text-gray-800 transition-all active:scale-95"
+                                    >
+                                        Return
                                     </button>
                                 )}
                             </div>
                             <div className="flex gap-4">
                                 {step < totalSteps ? (
-                                    <button type="button" onClick={nextStep} className={buttonPrimaryClass}>
-                                        <span>Continue</span>
-                                        <ChevronRight size={18} />
+                                    <button
+                                        type="button"
+                                        onClick={nextStep}
+                                        className="px-10 py-4 rounded-2xl font-black bg-[#7c3aed] text-white shadow-xl shadow-purple-100 hover:shadow-purple-400 transition-all flex items-center justify-center gap-3 text-[10px] uppercase tracking-[0.2em] active:scale-95 group"
+                                    >
+                                        <span>Proceed</span>
+                                        <ChevronRight size={18} strokeWidth={3} className="group-hover:translate-x-1 transition-transform" />
                                     </button>
                                 ) : (
                                     <button
-                                        type="button"
-                                        onClick={() => setShowSuccessModal(true)}
-                                        className={buttonPrimaryClass}
+                                        type="submit"
+                                        className="px-10 py-4 rounded-2xl font-black bg-gradient-to-r from-green-500 to-emerald-600 text-white shadow-xl shadow-green-100 hover:shadow-green-400 transition-all flex items-center justify-center gap-3 text-[10px] uppercase tracking-[0.2em] active:scale-95"
                                     >
-                                        Launch Ad
+                                        Activate Campaign
                                     </button>
                                 )}
                             </div>
@@ -429,38 +457,28 @@ const AdForm = ({ onBack, onSubmit }) => {
 
             {/* Success Modal */}
             {showSuccessModal && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm animate-in fade-in duration-300">
-                    <div className="bg-white rounded-[28px] p-6 md:p-10 max-w-sm w-full shadow-2xl animate-in zoom-in-95 slide-in-from-bottom-8 duration-500 text-center">
-                        <div className="w-16 h-16 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-6 transition-all duration-1000">
-                            <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white shadow-lg shadow-green-100">
-                                <Check size={28} strokeWidth={3} />
+                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-md animate-in fade-in duration-300">
+                    <div className="bg-white rounded-[28px] p-10 max-w-sm w-full shadow-2xl animate-in zoom-in-95 slide-in-from-bottom-8 duration-500 text-center border border-gray-100">
+                        <div className="w-20 h-20 bg-green-50 rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-inner">
+                            <div className="w-14 h-14 bg-green-500 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-green-100">
+                                <Check size={32} strokeWidth={4} />
                             </div>
                         </div>
 
-                        <h2 className="text-2xl font-black text-gray-800 mb-3 tracking-tight">Campaign Launched!</h2>
-                        <p className="text-gray-500 font-medium mb-8 leading-relaxed text-sm">
-                            Your campaign has been successfully created and is now ready for processing.
+                        <h2 className="text-3xl font-black text-gray-800 mb-4 tracking-tighter">Campaign Live!</h2>
+                        <p className="text-gray-400 font-bold text-xs uppercase tracking-widest mb-10 leading-relaxed">
+                            Your advertisement is being synced with our global network.
                         </p>
 
-                        <div className="flex flex-col gap-2">
+                        <div className="flex flex-col gap-3">
                             <button
                                 onClick={() => {
-                                    const finalData = {
-                                        selectedAgeGroups,
-                                        interestTags,
-                                        image: imagePreview,
-                                    };
-                                    onSubmit(finalData);
+                                    setShowSuccessModal(false);
+                                    onBack(); // Go back to the ads list
                                 }}
-                                className="w-full py-3 bg-[#7c3aed] text-white font-black rounded-2xl shadow-xl shadow-purple-100 hover:shadow-purple-200 transition-all transform hover:-translate-y-1 active:scale-95 text-base"
+                                className="w-full py-4 bg-[#7c3aed] text-white font-black rounded-2xl shadow-xl shadow-purple-100 hover:shadow-purple-400 transition-all transform hover:-translate-y-1 active:scale-95 text-[10px] uppercase tracking-[0.2em]"
                             >
-                                Confirm & View Ads
-                            </button>
-                            <button
-                                onClick={() => setShowSuccessModal(false)}
-                                className="text-gray-400 font-bold hover:text-gray-600 transition-colors py-1 text-sm"
-                            >
-                                Go Back
+                                Dashboard Overview
                             </button>
                         </div>
                     </div>
