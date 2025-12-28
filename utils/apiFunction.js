@@ -10,7 +10,9 @@ import { decryptData } from "./encrypt";
 // Update the base URL according to your environment
 // export const baseURL = "https://wise-ottawa-gardens-extensions.trycloudflare.com/api/";
 // export const baseURL = "https://fool-rows-criticism-egg.trycloudflare.com/api/";
-export const baseURL = "https://prizes-inquiries-means-keep.trycloudflare.com/api/";
+// export const baseURL = "https://prizes-inquiries-means-keep.trycloudflare.com/api/";
+
+export const baseURL = "https://november-periodically-routine-litigation.trycloudflare.com/api/";
 
 const apiFunction = () => {
     const encryptedUser = useSelector(selectUser);

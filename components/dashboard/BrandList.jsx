@@ -45,7 +45,7 @@ const BrandList = ({ brands, onCreateClick, onEditClick, onDeleteClick }) => {
             header: "Location",
             accessor: "location",
             minWidth: "250px",
-            cell: (row) => <span className="text-xs font-medium text-gray-600">{row.location}</span>
+            cell: (row) => <span className="text-xs font-medium text-gray-600">{row.location?.text || "N/A"}</span>
         },
         {
             header: "Email Address",

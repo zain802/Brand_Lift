@@ -12,6 +12,7 @@ import { Search, Filter, Loader2, ChevronLeft, ChevronRight } from "lucide-react
  * @param {Object} props.search - Search configuration { value, onChange, placeholder }
  * @param {string} props.title - Table title
  * @param {Object} props.pagination - Pagination config { page, totalRows, onPageChange, limit }
+ * @param {Object} props.actions - Actions configuration { onEdit, onDelete }
  */
 const PremiumTable = ({
     columns,

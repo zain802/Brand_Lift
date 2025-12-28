@@ -6,6 +6,7 @@ import BrandForm from '@/components/dashboard/BrandForm';
 interface BrandLocation {
   type: string;
   coordinates: [number, number];
+  text?: string;
 }
 
 interface Brand {
@@ -34,7 +35,7 @@ export default function BrandPage() {
       business_name: "Modern Dental Clinic",
       business_type: "doctor",
       description: "P-first approach.",
-      location: "lahore",
+      location: { type: "Point", coordinates: [74.3587, 31.5204], text: "Lahore, Pakistan" },
       image: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=400&h=400&fit=crop",
       radius_km: 15,
       address: "452 Healthcare Ave, Medical District, Los Angeles, CA",
@@ -49,7 +50,8 @@ export default function BrandPage() {
       business_type: "restaurant",
       description: "Fdaily since 2010.",
       image: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=400&h=400&fit=crop",
-      location: "lahore",
+      location: { type: "Point", coordinates: [74.3587, 31.5204], text: "Lahore, Pakistan" },
+      radius_km: 10,
       address: "12 Bakery Lane, Old Town Square, Los Angeles, CA",
       website: "https://artisanbakery.com",
       phone: "+1 (555) 987-6543",
@@ -91,7 +93,7 @@ export default function BrandPage() {
       ) : (
         <BrandForm
           onBack={handleBack}
-          editData={editingBrand}
+          editData={editingBrand as any}
         />
       )}
     </div>

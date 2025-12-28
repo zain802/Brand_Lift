@@ -8,11 +8,30 @@ import {
 import AdForm from "@/components/dashboard/AdForm";
 import DataTable from "@/components/common/DataTable";
 
+interface Ad {
+    id: number;
+    title: string;
+    description: string;
+    location: string;
+    radius_km: number;
+    target_provinces: string;
+    target_cities: string;
+    target_gender: string;
+    target_interests: string[];
+    target_age_groups: string[];
+    start_date: string;
+    end_date: string;
+    price: number;
+    duration: string;
+    status: string;
+    image: string;
+}
+
 export default function CreateAdsPage() {
     const [showForm, setShowForm] = useState(false);
 
     // Mock data updated to match all AdForm inputs
-    const ads = [
+    const ads: Ad[] = [
         {
             id: 1,
             title: "Summer Fashion",
@@ -55,7 +74,7 @@ export default function CreateAdsPage() {
         {
             header: "Banner",
             width: "150px",
-            accessor: (row) => (
+            accessor: (row: Ad) => (
                 <div className="w-12 h-12 rounded-xl bg-purple-50 flex items-center justify-center border border-purple-100 shadow-sm overflow-hidden">
                     {row.image ? (
                         <img src={row.image} alt="" className="w-full h-full object-cover" />
@@ -68,44 +87,44 @@ export default function CreateAdsPage() {
         {
             header: "Title",
             width: "200px",
-            accessor: (row) => <span className="font-bold text-gray-800 uppercase tracking-tight text-[11px]">{row.title}</span>
+            accessor: (row: any) => <span className="font-bold text-gray-800 uppercase tracking-tight text-[11px]">{row.title}</span>
         },
         {
             header: "Description",
             width: "250px",
-            accessor: (row) => <p className="text-[10px] text-gray-400 font-medium line-clamp-2 leading-relaxed">{row.description}</p>
+            accessor: (row: any) => <p className="text-[10px] text-gray-400 font-medium line-clamp-2 leading-relaxed">{row.description}</p>
         },
         {
             header: "Location",
             width: "150px",
-            accessor: (row) => <span className="text-[10px] font-black text-gray-500 uppercase">{row.location}</span>
+            accessor: (row: any) => <span className="text-[10px] font-black text-gray-500 uppercase">{row.location}</span>
         },
         {
             header: "Radius",
             width: "130px",
-            accessor: (row) => <span className="text-[10px] font-black text-purple-500 bg-purple-50 px-2 py-1 rounded-lg">{row.radius_km} KM</span>
+            accessor: (row: any) => <span className="text-[10px] font-black text-purple-500 bg-purple-50 px-2 py-1 rounded-lg">{row.radius_km} KM</span>
         },
         {
             header: "Provinces",
             width: "150px",
-            accessor: (row) => <span className="text-[10px] font-black text-blue-500 bg-blue-50 px-2 py-1 rounded-lg uppercase">{row.target_provinces}</span>
+            accessor: (row: any) => <span className="text-[10px] font-black text-blue-500 bg-blue-50 px-2 py-1 rounded-lg uppercase">{row.target_provinces}</span>
         },
         {
             header: "Cities",
             width: "200px",
-            accessor: (row) => <span className="text-[10px] font-bold text-gray-600 uppercase tracking-tight">{row.target_cities}</span>
+            accessor: (row: any) => <span className="text-[10px] font-bold text-gray-600 uppercase tracking-tight">{row.target_cities}</span>
         },
         {
             header: "Gender",
             width: "130px",
-            accessor: (row) => <span className="text-[10px] font-black text-orange-500 uppercase">{row.target_gender}</span>
+            accessor: (row: any) => <span className="text-[10px] font-black text-orange-500 uppercase">{row.target_gender}</span>
         },
         {
             header: "Age Groups",
             width: "180px",
-            accessor: (row) => (
+            accessor: (row: any) => (
                 <div className="flex flex-wrap gap-1">
-                    {row.target_age_groups.map(age => (
+                    {row.target_age_groups.map((age: any) => (
                         <span key={age} className="text-[9px] font-black text-gray-400 bg-gray-50 px-1.5 py-0.5 rounded border border-gray-100">{age}</span>
                     ))}
                 </div>
@@ -114,9 +133,9 @@ export default function CreateAdsPage() {
         {
             header: "Interests",
             width: "200px",
-            accessor: (row) => (
+            accessor: (row: any) => (
                 <div className="flex flex-wrap gap-1">
-                    {row.target_interests.map(tag => (
+                    {row.target_interests.map((tag: any) => (
                         <span key={tag} className="text-[9px] font-black text-purple-400 px-1">#{tag}</span>
                     ))}
                 </div>
@@ -125,27 +144,27 @@ export default function CreateAdsPage() {
         {
             header: "Start Date",
             width: "150px",
-            accessor: (row) => <span className="text-[10px] font-bold text-gray-400">{row.start_date}</span>
+            accessor: (row: any) => <span className="text-[10px] font-bold text-gray-400">{row.start_date}</span>
         },
         {
             header: "End Date",
             width: "150px",
-            accessor: (row) => <span className="text-[10px] font-bold text-gray-400">{row.end_date}</span>
+            accessor: (row: any) => <span className="text-[10px] font-bold text-gray-400">{row.end_date}</span>
         },
         {
             header: "Price",
             width: "120px",
-            accessor: (row) => <span className="text-sm font-black text-green-600 tracking-tighter">PKR {row.price.toLocaleString()}</span>
+            accessor: (row: any) => <span className="text-sm font-black text-green-600 tracking-tighter">PKR {row.price.toLocaleString()}</span>
         },
         {
             header: "Duration",
             width: "150px",
-            accessor: (row) => <span className="px-2 py-1 bg-gray-50 text-gray-500 text-[9px] font-black uppercase rounded-lg border border-gray-100">{row.duration}</span>
+            accessor: (row: any) => <span className="px-2 py-1 bg-gray-50 text-gray-500 text-[9px] font-black uppercase rounded-lg border border-gray-100">{row.duration}</span>
         },
         {
             header: "Status",
             width: "120px",
-            accessor: (row) => (
+            accessor: (row: any) => (
                 <span className={`px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.1em] ${row.status === 'Running' ? 'bg-blue-50 text-blue-500 border border-blue-100' : 'bg-orange-50 text-orange-500 border border-orange-100'
                     }`}>
                     {row.status}
@@ -206,19 +225,20 @@ export default function CreateAdsPage() {
                 title="Active Promotion Matrix"
                 columns={columns}
                 data={ads}
+                loading={false}
                 search={{
-                    onChange: (v) => console.log(v),
+                    onChange: (v: any) => console.log(v),
                     placeholder: "Interrogate campaigns..."
                 }}
                 pagination={{
                     page: 1,
                     totalRows: ads.length,
-                    onPageChange: (p) => console.log(p),
+                    onPageChange: (p: any) => console.log(p),
                     limit: 10
                 }}
                 actions={{
-                    onEdit: (r) => console.log("Edit", r),
-                    onDelete: (r) => alert(`Delete ${r.title}?`)
+                    onEdit: (r: any) => console.log("Edit", r),
+                    onDelete: (r: any) => alert(`Delete ${r.title}?`)
                 }}
             />
         </div>

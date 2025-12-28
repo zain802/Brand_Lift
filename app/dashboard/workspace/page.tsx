@@ -57,7 +57,7 @@ export default function WorkspacePage() {
                     }
                 }));
             }
-        } catch (error) {
+        } catch (error: any) {
             dispatch(setError(error.message));
             toast.error("Failed to fetch workspaces");
         }
@@ -67,23 +67,23 @@ export default function WorkspacePage() {
         fetchWorkspaces();
     }, [pagination.page]);
 
-    const handleSearchChange = (val) => {
+    const handleSearchChange = (val: any) => {
         dispatch(setSearchQuery(val));
         // Debounce or trigger search could be here
     };
 
-    const handleDelete = async (row) => {
+    const handleDelete = async (row: any) => {
         if (!window.confirm(`Are you sure you want to delete ${row.name}?`)) return;
         try {
             await deleteData(`${endpoints.workspaces}${row.id}/`);
             dispatch(deleteWorkspaceFromState(row.id));
             toast.success("Workspace deleted successfully");
-        } catch (error) {
+        } catch (error: any) {
             toast.error("Delete failed");
         }
     };
 
-    const handleEdit = (row) => {
+    const handleEdit = (row: any) => {
         setEditData(row);
         setShowForm(true);
     };
@@ -103,7 +103,7 @@ export default function WorkspacePage() {
     const columns = [
         {
             header: "Workspace Logo",
-            accessor: (row) => (
+            accessor: (row: any) => (
                 <div className="w-12 h-12 rounded-xl bg-purple-50 flex items-center justify-center text-purple-600 font-bold overflow-hidden shadow-sm border border-purple-100">
                     {row.logo ? (
                         <img src={row.logo} alt="" className="w-full h-full object-cover" />
@@ -115,7 +115,7 @@ export default function WorkspacePage() {
         },
         {
             header: "Name",
-            accessor: (row) => (
+            accessor: (row: any) => (
                 <div>
                     <p className="font-black text-gray-800 text-sm">{row.name}</p>
                     <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">{row.theme || "Standard"}</p>
@@ -124,13 +124,13 @@ export default function WorkspacePage() {
         },
         {
             header: "Description",
-            accessor: (row) => (
+            accessor: (row: any) => (
                 <p className="text-xs text-gray-500 font-medium max-w-[250px] line-clamp-1">{row.description || "No description provided."}</p>
             )
         },
         {
             header: "Visuals",
-            accessor: (row) => (
+            accessor: (row: any) => (
                 <div className="flex items-center gap-3">
                     <div className="w-6 h-6 rounded-full border-2 border-white shadow-sm" style={{ backgroundColor: row.color_scheme || '#eee' }} title="Color Scheme"></div>
                     <div className="w-10 h-6 rounded-md bg-gray-100 overflow-hidden border border-gray-200" title="Banner Preview">
