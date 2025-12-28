@@ -14,9 +14,26 @@ import {
 } from "lucide-react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { useDispatch, useSelector } from "react-redux";
+import { logout, selectUser } from "@/Redux/Slices/AuthSlice";
+import { decryptData } from "@/utils/encrypt";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 const Sidebar = ({ isOpen, setIsOpen }) => {
     const pathname = usePathname();
+    const dispatch = useDispatch();
+    const router = useRouter();
+    const encryptedUser = useSelector(selectUser);
+
+    const userData = encryptedUser ? decryptData(encryptedUser) : null;
+    const userRole = userData?.user_type || userData?.data?.user?.user_type || "Member";
+
+    const handleLogout = () => {
+        dispatch(logout());
+        toast.info("Logged out successfully");
+        router.push("/login");
+    };
 
     const menuItems = [
         { name: "Dashboard", icon: <LayoutDashboard size={20} />, href: "/dashboard" },
@@ -39,7 +56,12 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
                     <div className="w-10 h-10 border-2 border-white rounded-lg flex items-center justify-center">
                         <span className="text-xl font-bold">A</span>
                     </div>
-                    <span className="text-xl font-bold tracking-tight">Branding Ups</span>
+                    <div className="flex flex-col">
+                        <span className="text-xl font-bold tracking-tight">Branding Ups</span>
+                        <span className="text-[10px] uppercase tracking-[0.2em] text-white/60 font-black truncate max-w-[120px]">
+                            {userRole.replace('_', ' ')}
+                        </span>
+                    </div>
                 </div>
                 <button
                     onClick={() => setIsOpen(false)}
@@ -74,9 +96,9 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
                     );
                 })}
 
-                {/* Logout Button - Moved below Profile */}
+                {/* Logout Button */}
                 <button
-                    onClick={() => console.log("Logging out...")}
+                    onClick={handleLogout}
                     className="w-full flex items-center gap-4 px-4 py-2 text-white/60 hover:text-white group transition-all duration-300"
                 >
                     <div className="w-11 h-11 rounded-full flex items-center justify-center border-2 border-white/30 group-hover:border-white/60 group-hover:bg-red-500/20 transition-all duration-300">

@@ -17,7 +17,7 @@ const signupSchema = z.object({
     email: z.string().email("Invalid email address"),
     password: z.string().min(6, "Password must be at least 6 characters"),
     user_type: z.object({
-        value: z.enum(["merchant", "creator", "member", "elite_partner"]),
+        value: z.enum(["merchant", "creator", "member", "elite_partner", "designer", "developer"]),
         label: z.string()
     }).nullable().refine((val) => val !== null, "Please select an account type"),
     terms: z.boolean().refine(val => val === true, "You must agree to terms"),
@@ -26,10 +26,12 @@ const signupSchema = z.object({
 type SignupFormData = z.infer<typeof signupSchema>;
 
 const userTypeOptions = [
-    { value: "merchant", label: "Ambassador" },
-    { value: "creator", label: "Celebrity" },
+    { value: "merchant", label: "Merchant" },
+    { value: "creator", label: "Creator" },
     { value: "member", label: "Member" },
-    { value: "elite_partner", label: "Investor" },
+    { value: "elite_partner", label: "Elite Partner" },
+    { value: "designer", label: "Designer" },
+    { value: "developer", label: "Developer" },
 ] as const;
 
 const customSelectStyles = {

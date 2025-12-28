@@ -16,8 +16,8 @@ const Topbar = ({ onMenuClick }) => {
 
     // Decrypt user data if available
     const userData = encryptedUser ? decryptData(encryptedUser) : null;
-    const userName = userData?.data?.user?.full_name || "User";
-    const userRole = userData?.data?.user?.user_type || "Member";
+    const userName = userData?.full_name || userData?.data?.user?.full_name || "User";
+    const userRole = userData?.user_type || userData?.data?.user?.user_type || "Member";
 
     const handleLogout = () => {
         dispatch(logout());
@@ -34,8 +34,8 @@ const Topbar = ({ onMenuClick }) => {
                 >
                     <MenuIcon size={24} />
                 </button>
-                <h1 className="text-base md:text-xl lg:text-2xl font-bold text-gray-800 truncate">
-                    Branding Ups
+                <h1 className="text-base md:text-xl lg:text-2xl font-bold text-gray-800 truncate uppercase tracking-tighter">
+                    Branding Ups <span className="text-purple-600">| {userRole.replace('_', ' ')}</span>
                 </h1>
             </div>
 

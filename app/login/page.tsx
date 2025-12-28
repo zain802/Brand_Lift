@@ -47,11 +47,14 @@ export default function Login() {
             const response = await postData(endpoints.auth.login, data);
             console.log("Login success:", response);
 
-            // Assuming response contains user data and tokens
+            // Store the response which includes access_token and user_type
             const encryptedResponse = encryptData(response);
             dispatch(setUser(encryptedResponse));
 
-            toast.success("Logged in successfully!");
+            const userType = response.user_type || "member";
+            toast.success(`Logged in as ${userType.replace('_', ' ')} successfully!`);
+
+            // Redirect to dashboard
             router.push("/dashboard");
         } catch (error: any) {
             console.error("Login failed:", error);

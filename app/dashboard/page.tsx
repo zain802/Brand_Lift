@@ -1,41 +1,37 @@
 "use client";
 import React from "react";
-import StatCard from "@/components/dashboard/StatCard";
-import RecentAds from "@/components/dashboard/RecentAds";
+import { useSelector } from "react-redux";
+import { selectUser } from "@/Redux/Slices/AuthSlice";
+import { decryptData } from "@/utils/encrypt";
+
+// Role Specific Dashboards - Added .jsx to resolve IDE/Build path issues
+import MerchantDashboard from "@/components/dashboard/roles/merchant/MerchantDashboard.jsx";
+import CreatorDashboard from "@/components/dashboard/roles/creator/CreatorDashboard.jsx";
+import MemberDashboard from "@/components/dashboard/roles/member/MemberDashboard.jsx";
+import ElitePartnerDashboard from "@/components/dashboard/roles/elite_partner/ElitePartnerDashboard.jsx";
+import DesignerDashboard from "@/components/dashboard/roles/designer/DesignerDashboard.jsx";
+import DeveloperDashboard from "@/components/dashboard/roles/developer/DeveloperDashboard.jsx";
 
 export default function DashboardPage() {
+    const encryptedUser = useSelector(selectUser);
+    const userData = encryptedUser ? decryptData(encryptedUser) : null;
+    const userRole = userData?.user_type || userData?.data?.user?.user_type || "merchant";
+
+    const renderDashboard = () => {
+        switch (userRole) {
+            case "merchant": return <MerchantDashboard />;
+            case "creator": return <CreatorDashboard />;
+            case "member": return <MemberDashboard />;
+            case "elite_partner": return <ElitePartnerDashboard />;
+            case "designer": return <DesignerDashboard />;
+            case "developer": return <DeveloperDashboard />;
+            default: return <MerchantDashboard />;
+        }
+    };
+
     return (
         <div className="max-w-[1600px] mx-auto w-full">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-4">
-                <StatCard
-                    title="Active Ads"
-                    value="14"
-                />
-                <StatCard
-                    title="Total Spend"
-                    value="$1,250.80"
-                    subValue={true}
-                />
-                <StatCard
-                    title="Views / Clicks"
-                    value="15,800 / 950"
-                />
-                <StatCard
-                    title="Reach"
-                    value="25,000+"
-                />
-            </div>
-
-            <div className="mt-10 flex flex-col sm:flex-row justify-center items-center gap-6">
-                <button className="w-full sm:w-auto px-12 py-3.5 bg-gradient-to-r from-[#2e1065] to-[#7c3aed] text-white font-bold rounded-full shadow-lg shadow-purple-200 hover:shadow-purple-300 transition-all transform hover:-translate-y-1 active:scale-95">
-                    Create New Ad
-                </button>
-                <button className="w-full sm:w-auto px-12 py-3.5 bg-gradient-to-r from-[#2e1065] to-[#7c3aed] text-white font-bold rounded-full shadow-lg shadow-purple-200 hover:shadow-purple-300 transition-all transform hover:-translate-y-1 active:scale-95">
-                    View Reports
-                </button>
-            </div>
-
-            <RecentAds />
+            {renderDashboard()}
         </div>
     );
 }
