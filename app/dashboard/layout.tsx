@@ -17,8 +17,8 @@ import MemberSidebar from "@/components/dashboard/roles/member/MemberSidebar.jsx
 import MemberTopbar from "@/components/dashboard/roles/member/MemberTopbar.jsx";
 
 // Elite
-import EliteSidebar from "@/components/dashboard/roles/elite_partner/ElitePartnerSidebar.jsx";
-import EliteTopbar from "@/components/dashboard/roles/elite_partner/ElitePartnerTopbar.jsx";
+import ElitePartnerSidebar from "@/components/dashboard/roles/elite_partner/ElitePartnerSidebar.jsx";
+import ElitePartnerTopbar from "@/components/dashboard/roles/elite_partner/ElitePartnerTopbar.jsx";
 
 // Designer
 import DesignerSidebar from "@/components/dashboard/roles/designer/DesignerSidebar.jsx";
@@ -41,7 +41,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             case "merchant": return <MerchantSidebar {...props} />;
             case "creator": return <CreatorSidebar {...props} />;
             case "member": return <MemberSidebar {...props} />;
-            case "elite_partner": return <EliteSidebar {...props} />;
+            case "elite_partner": return <ElitePartnerSidebar {...props} />;
             case "designer": return <DesignerSidebar {...props} />;
             case "developer": return <DeveloperSidebar {...props} />;
             default: return <MerchantSidebar {...props} />;
